@@ -34,7 +34,7 @@ if __name__ == "__main__":
     pred_rf = model_rf.predict(dataset[dataset.columns.difference(
         ["key", "time_signature", "key_name", "mode_name", "target", "track_id", "artist_name", "Unnamed: 0"])].iloc[
                          100:, :])
-    print("Test Error:", np.mean([labels[i] != pred[i] for i in range(len(labels))]))
+    print("Test Error:", np.mean([labels[i] != pred_rf[i] for i in range(len(labels))]))
 
 
 
