@@ -1,12 +1,14 @@
-import sklearn as sk
+from sklearn.neighbors import KNeighborsClassifier
 import os
 import numpy as np
 import pandas as pd
 
-def runKNN(dataset, k):
-    neigh = sk.neighbors.KNeighborsClassifier(n_neighbors=k)
-    X = dataset[dataset.columns.difference(["key", "time_signature", "key_name", "mode_name", "targets"])]
-    y = dataset["targets"]
+def KNN(dataset, k):
+    neigh = KNeighborsClassifier(n_neighbors=k)
+    X = dataset[dataset.columns.difference(["key", "time_signature", "key_name", "mode_name", "target", "track_id", "artist_name", "Unnamed: 0"])]
+    y = dataset["target"]
     neigh.fit(X, y)
     return neigh
+
+
 
