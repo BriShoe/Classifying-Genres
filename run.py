@@ -2,6 +2,7 @@ import os
 import numpy as np
 import pandas as pd
 from sklearn.preprocessing import scale
+from sklearn.model_selection import train_test_split
 from models.kNearestNeighbors import KNN
 
 
@@ -17,16 +18,28 @@ def standardize(dataset):
         dataset[column] = standcolumn
 
 
+def convertGenres(dataset):
+    genreDict = dict()
+    reversegenreDict = dict()
+    values = set(dataset["genre"].values)
+    for num, genre in enumerate(list(values), start=0):
+        genreDict[num] = genre
+        reversegenreDict[genre] = num
+    dataset["genre"] = dataset["genre"].transform(lambda x: reversegenreDict[x])
+    return dataset, genreDict
+
+
 if __name__ == "__main__":
     reweight = True
     root = os.getcwd()
-    filepath = f"{root}/data/list_of_arctic.csv"
-    dataset = randomizetargets(pd.read_csv(filepath), 3)
+    filepath = f"{root}/data/songs_concise.csv"
+    dataset, genreMap = convertGenres(pd.read_csv(filepath))
     if reweight:
         standardize(dataset)
-    model = KNN(dataset.iloc[:100, :], 5)
-    pred = model.predict(dataset[dataset.columns.difference(["key", "time_signature", "key_name", "mode_name", "target", "track_id", "artist_name", "Unnamed: 0"])].iloc[100:, :])
-    labels = dataset["target"][100:].values
+    train, test = train_test_split(dataset, test_size=0.2, random_state=0)
+    model = KNN(train, 1)
+    pred = model.predict(test[test.columns.difference(["key", "time_signature", "key_name", "mode_name", "target", "track_name", "artist_name", "Unnamed: 0"])])
+    labels = test["genre"].values
     print("Test Error:", np.mean([labels[i] != pred[i] for i in range(len(labels))]))
 
 
