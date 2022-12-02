@@ -3,7 +3,10 @@ import numpy as np
 import pandas as pd
 from sklearn.preprocessing import scale
 from sklearn.model_selection import train_test_split
+from sklearn import metrics
+
 from models.kNearestNeighbors import KNN
+from models.random_forest import random_forest
 
 
 def randomizetargets(dataset, numTargets):
@@ -41,6 +44,11 @@ if __name__ == "__main__":
     pred = model.predict(test[test.columns.difference(["key", "time_signature", "key_name", "mode_name", "target", "track_name", "artist_name", "Unnamed: 0"])])
     labels = test["genre"].values
     print("Test Error:", np.mean([labels[i] != pred[i] for i in range(len(labels))]))
+    model_rf = random_forest(dataset.iloc[:100, :], 100)
+    pred_rf = model_rf.predict(dataset[dataset.columns.difference(
+        ["key", "time_signature", "key_name", "mode_name", "target", "track_id", "artist_name", "Unnamed: 0"])].iloc[
+                         100:, :])
+    print("Test Error:", np.mean([labels[i] != pred_rf[i] for i in range(len(labels))]))
 
 
 
