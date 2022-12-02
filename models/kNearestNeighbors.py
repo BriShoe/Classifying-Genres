@@ -5,5 +5,7 @@ import pandas as pd
 
 def runKNN(dataset, k):
     neigh = sk.neighbors.KNeighborsClassifier(n_neighbors=k)
+    X = dataset.select_dtypes(include=[])
     neigh.fit()
+    return neigh
 
