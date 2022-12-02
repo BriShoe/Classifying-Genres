@@ -1,0 +1,5 @@
+conda install -c anaconda seaborn
+conda install -c anaconda sklearn
+conda install -c anaconda matplotlib
+conda install -c anaconda pandas
+
