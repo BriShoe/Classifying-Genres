@@ -26,7 +26,8 @@ if __name__ == "__main__":
         standardize(dataset)
     model = KNN(dataset.iloc[:100, :], 5)
     pred = model.predict(dataset[dataset.columns.difference(["key", "time_signature", "key_name", "mode_name", "target", "track_id", "artist_name", "Unnamed: 0"])].iloc[100:, :])
-    print("Test Error:", )
+    labels = dataset["target"][100:].values
+    print("Test Error:", np.mean([labels[i] != pred[i] for i in range(len(labels))]))
 
 
 
