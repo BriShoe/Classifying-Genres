@@ -6,7 +6,7 @@ from models.kNearestNeighbors import runKNN
 
 def randomizeTargets(dataset, numTargets):
     random = np.random.randint(numTargets, size=dataset.shape[0])
-    dataset["targets"] = random
+    dataset["target"] = random
     return dataset
 
 def main():
