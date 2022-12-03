@@ -7,6 +7,8 @@ from sklearn import metrics
 
 from models.kNearestNeighbors import KNN
 from models.random_forest import random_forest
+from models.svm import svm
+from models.logreg import logreg
 
 
 def randomizetargets(dataset, numTargets):
@@ -35,20 +37,20 @@ def convertGenres(dataset):
 if __name__ == "__main__":
     reweight = True
     root = os.getcwd()
-    filepath = f"{root}/data/songs_concise.csv"
+    filepath = f"{root}/data/valid.csv"
+    dataframe = pd.read_csv(filepath)
     dataset, genreMap = convertGenres(pd.read_csv(filepath))
     if reweight:
         standardize(dataset)
     train, test = train_test_split(dataset, test_size=0.2, random_state=0)
-    model = KNN(train, 1)
-    pred = model.predict(test[test.columns.difference(["key", "time_signature", "key_name", "mode_name", "target", "track_name", "artist_name", "Unnamed: 0"])])
+    model = logreg(train)
+    pred = model.predict(test[test.columns.difference(["genre", "key", "time_signature", "key_name", "mode_name", "target", "track_name", "artist_name", "Unnamed: 0"])])
     labels = test["genre"].values
+    #model_rf = random_forest(dataset.iloc[:100, :], 100)
+    #pred_rf = model_rf.predict(dataset[dataset.columns.difference(
+        #["key", "time_signature", "key_name", "mode_name", "target", "track_id", "artist_name", "Unnamed: 0"])].iloc[
+         #                100:, :])
     print("Test Error:", np.mean([labels[i] != pred[i] for i in range(len(labels))]))
-    model_rf = random_forest(dataset.iloc[:100, :], 100)
-    pred_rf = model_rf.predict(dataset[dataset.columns.difference(
-        ["key", "time_signature", "key_name", "mode_name", "target", "track_id", "artist_name", "Unnamed: 0"])].iloc[
-                         100:, :])
-    print("Test Error:", np.mean([labels[i] != pred_rf[i] for i in range(len(labels))]))
 
 
 
