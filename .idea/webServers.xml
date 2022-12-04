@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="30a32df7-c0c2-42b0-ae56-7aebeb638e31" name="Myth">
+        <fileTransfer rootFolder="/afs/.ir.stanford.edu/users/j/w/jwang003" accessType="SFTP" host="myth.stanford.edu" port="22" sshConfigId="574513b6-f67f-48db-b6e0-04554e495120" sshConfig="jwang003@myth.stanford.edu:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
