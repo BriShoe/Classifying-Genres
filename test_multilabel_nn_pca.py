@@ -9,6 +9,7 @@ import matplotlib.pyplot as plt
 from torch.utils.data import Dataset, DataLoader
 from torch import nn
 import torch.nn.functional as F
+from sklearn.decomposition import PCA
 
 
 # get dataset
@@ -28,6 +29,7 @@ class multi_classifier(nn.Module):
         super(multi_classifier,self).__init__()
         self.l1 = nn.Sequential(
             nn.Linear(input_size,256),
+            nn.ReLU(),
             nn.ReLU(),
             nn.Dropout(0.5)
         )
@@ -56,26 +58,38 @@ def get_prediction(x, subgenres, model):
     return labels
 
 
+# Transforms array of indices for classes into
 def createOneHot(num):
     return np.array([1 if i == num else 0 for i in range(74)])
+
+
+def fitPCA(X, k):
+    pca = PCA(n_components=k)
+    pca.fit(X)
+    return pca
 
 
 # evaluate using 10-fold cross-validation
 if __name__ == '__main__':
     # combine data
-    data_p1 = pd.read_csv('data/rock1edited.csv', index_col = 0)
-    data_p2 = pd.read_csv('data/rock2edited.csv', index_col = 0)
+    data_p1 = pd.read_csv('data/rock1edited.csv', index_col=0)
+    data_p2 = pd.read_csv('data/rock2edited.csv', index_col=0)
     full_train = data_p1.append(data_p2)
-    full_test = pd.read_csv('data/rockvalidedited.csv', index_col = 0)
+    full_test = pd.read_csv('data/rockvalidedited.csv', index_col=0)
     
     # separate target values
     num_genres = 74
     X = full_train.iloc[:, : len(full_train.columns) - num_genres]
     Y = full_train.iloc[:, len(full_train.columns) - num_genres:]
 
-    dataset = make_dataset(X.values, Y.values)
+    # Fit a PCA
+    components = 50
+    pca = fitPCA(X, components)
+    X = pca.transform(X)
+
+    dataset = make_dataset(X, Y.values)
     dataloader = DataLoader(dataset=dataset, shuffle=True, batch_size=32)
-    model = multi_classifier(len(full_train.columns) - num_genres, num_genres)
+    model = multi_classifier(X.shape[1], num_genres)
     # binary cross entropy loss
     criterion = nn.BCELoss()
     optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
@@ -102,11 +116,16 @@ if __name__ == '__main__':
             print(cost)
             print(np.asarray(running_accuracy).mean())
             costval.append(cost)
+
+    # save model state
+    torch.save(model.state_dict(), f"models/neuralnetworks/nn_pca_{components}")
     
     # check on test set
     X_test = full_test.iloc[:, : len(full_test.columns) - num_genres]
     Y_test = full_test.iloc[:, len(full_test.columns) - num_genres:]
-    test_dataset = make_dataset(X_test.values, Y_test.values)
+    X_test = pca.transform(X_test)
+
+    test_dataset = make_dataset(X_test, Y_test.values)
     test_dataloader = DataLoader(dataset=test_dataset, shuffle=False, batch_size=32)
 
     model.eval()
@@ -161,7 +180,9 @@ if __name__ == '__main__':
     
     X_test = full_test.iloc[1, : len(full_test.columns) - num_genres]
     Y_test = full_test.iloc[1, len(full_test.columns) - num_genres:]
-    a = get_prediction(X_test, listOfGenres, model)
+    X_test = pca.transform(X_test)
+    get_prediction(X_test, listOfGenres, model)
+
     
     idx = np.argpartition(Y_test, -3)[-3:]
     labels = []
