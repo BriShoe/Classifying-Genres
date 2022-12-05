@@ -1,9 +1,8 @@
 import pandas as pd
 import os
 from ast import literal_eval
-import numpy as np
-from collections import defaultdict
-
+from sklearn.compose import make_column_transformer
+from sklearn.preprocessing import OneHotEncoder
 
 def createGenreList(df):
     genres = df[["genre1", "genre2", "genre3", "genre4", "genre5", "genre6", "genre7", "genre8", "genre9", "genre10"]]
@@ -98,32 +97,27 @@ def bringrocktoback(df):
 
 if __name__ == "__main__":
     root = os.getcwd()
-    df = pd.read_csv(f"{root}/data/rock1edited.csv")
+    df = pd.read_csv(f"{root}/data/rock1edited2.csv")
     df2 = pd.read_csv(f"{root}/data/rock2edited.csv")
     df3 = pd.read_csv(f"{root}/data/rockvalidedited.csv")
-    sharedcolumns = list(set(df.columns.values) & set(df2.columns.values) & set(df3.columns.values))
-    #rock1
-    df = df[sharedcolumns]
-    unlistify(df)
-    df.apply(pd.to_numeric, errors="ignore")
-    df.drop(["recordingmbid", "releasegroupmbid", "rock", "Unnamed: 0", "Unnamed: 0.1"], axis=1, inplace=True)
-    df = df.sort_index(axis=1)
+
+    df.dropna(how="all", axis=1, inplace=True)
+    df = pd.get_dummies(df2, prefix=["tonal_chords_key", "tonal_chords_scale", "tonal_key_key", "tonal_key_scale"])
+    df2 = pd.get_dummies(df2, prefix=["tonal_chords_key", "tonal_chords_scale", "tonal_key_key", "tonal_key_scale"])
+    df3 = pd.get_dummies(df3, prefix=["tonal_chords_key", "tonal_chords_scale", "tonal_key_key", "tonal_key_scale"])
+
+    df.sort_index(axis=1)
+    df2.sort_index(axis=1)
+    df3.sort_index(axis=1)
+
     bringrocktoback(df)
-    #rock2
-    df2 = df2[sharedcolumns]
-    unlistify(df2)
-    df2.apply(pd.to_numeric, errors="ignore")
-    df2.drop(["recordingmbid", "releasegroupmbid", "rock", "Unnamed: 0", "Unnamed: 0.1"], axis=1, inplace=True)
-    df2 = df2.sort_index(axis=1)
     bringrocktoback(df2)
-    #rockvalid
-    df3 = df3[sharedcolumns]
-    unlistify(df3)
-    df3.apply(pd.to_numeric, errors="ignore")
-    df3.drop(["recordingmbid", "releasegroupmbid", "rock", "Unnamed: 0", "Unnamed: 0.1"], axis=1, inplace=True)
-    df3 = df3.sort_index(axis=1)
     bringrocktoback(df3)
 
-    df.to_csv(f"{root}/data/rock1edited2.csv")
-    df2.to_csv(f"{root}/data/rock2edited2.csv")
-    df3.to_csv(f"{root}/data/rockvalidedited2.csv")
+    df.drop("Unnamed: 0", axis=1, inplace=True)
+    df2.drop("Unnamed: 0", axis=1, inplace=True)
+    df3.drop("Unnamed: 0", axis=1, inplace=True)
+
+    df.to_csv(f"{root}/data/rock1edited.csv")
+    df2.to_csv(f"{root}/data/rock2edited.csv")
+    df3.to_csv(f"{root}/data/rockvalidedited.csv")
