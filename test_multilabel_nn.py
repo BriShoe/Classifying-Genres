@@ -3,7 +3,7 @@ import pandas as pd
 import torch
 import os
 import seaborn as sn
-from sklearn.metrics import confusion_matrix
+from sklearn.metrics import multilabel_confusion_matrix
 import numpy as np
 import matplotlib.pyplot as plt
 from torch.utils.data import Dataset, DataLoader
@@ -54,7 +54,10 @@ def get_prediction(x, subgenres, model):
         labels.append(subgenres[i])
     print(labels)
     return labels
-    
+
+
+def createOneHot(num):
+    return np.array([1 if i == num else 0 for i in range(74)])
 
 
 # evaluate using 10-fold cross-validation
@@ -146,12 +149,15 @@ if __name__ == '__main__':
                     'rock---jazzrock', 'rock---symphonicprog', 'rock---glam', 'rock---acousticrock',
                     'rock---psychedelicpop'])
 
-    cf_matrix = confusion_matrix(y_truths, y_predicts)
-    df_cm = pd.DataFrame(cf_matrix/np.sum(cf_matrix) *74, index = [i for i in listOfGenres],
-                     columns = [i for i in listOfGenres])
-    plt.figure(figsize = (12,7))
+
+    #Confusion Matrix
+    edited_y_predicts = [createOneHot(i) for i in y_predicts]
+    cf_matrix = multilabel_confusion_matrix(y_truths, edited_y_predicts)
+    df_cm = pd.DataFrame(cf_matrix/np.sum(cf_matrix) * 74, index=[i for i in listOfGenres],
+                         columns=[i for i in listOfGenres])
+    plt.figure(figsize=(12, 7))
     sn.heatmap(df_cm, annot=True)
-    plt.savefig('output.png')
+    plt.savefig('visualizations/output.png')
     
     X_test = full_test.iloc[1, : len(full_test.columns) - num_genres]
     Y_test = full_test.iloc[1, len(full_test.columns) - num_genres:]
