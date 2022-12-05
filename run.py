@@ -5,10 +5,10 @@ from sklearn.preprocessing import scale
 from sklearn.model_selection import train_test_split
 from sklearn import metrics
 
-from models.kNearestNeighbors import KNN
-from models.random_forest import random_forest
-from models.svm import svm
-from models.logreg import logreg
+from old.kNearestNeighbors import KNN
+from old.random_forest import random_forest
+from old.svm import svm
+from old.logreg import logreg
 
 
 def randomizetargets(dataset, numTargets):
