@@ -57,22 +57,17 @@ if __name__ == '__main__':
     # combine data
     data_p1 = pd.read_csv('data/rock1edited.csv', index_col = 0)
     data_p2 = pd.read_csv('data/rock2edited.csv', index_col = 0)
-    data_val = pd.read_csv('data/rockvalidedited.csv', index_col = 0)
-    sharedcolumns = list(set(data_p1.columns.values.tolist()) & set(data_p2.columns.values.tolist()) & set(data_val.columns.values.tolist()))
-    full_train = data_p1[sharedcolumns].append(data_p2[sharedcolumns])
-    full_train = full_train.apply(pd.to_numeric)
-    full_test = data_val[sharedcolumns]
-    root = os.getcwd()
-    full_train.to_csv(f"{root}/data/rock_combined.csv")
+    full_train = data_p1.append(data_p2)
+    full_test = pd.read_csv('data/rockvalidedited.csv', index_col = 0)
     
     # separate target values
     num_genres = 74
     X = full_train.iloc[:, : len(full_train.columns) - num_genres]
     Y = full_train.iloc[:, len(full_train.columns) - num_genres:]
 
-    dataset = make_dataset(X, Y)
+    dataset = make_dataset(X.values, Y.values)
     dataloader = DataLoader(dataset=dataset, shuffle=True, batch_size=32)
-    model = multi_classifier()
+    model = multi_classifier(len(full_train.columns) - num_genres, num_genres)
     # binary cross entropy loss
     criterion = nn.BCELoss()
     optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
@@ -95,10 +90,32 @@ if __name__ == '__main__':
             optimizer.zero_grad()
             cost.backward()
             optimizer.step()
-        if j % 50 == 0:
+        if j % 10 == 0:
             print(cost)
             print(np.asarray(running_accuracy).mean())
             costval.append(cost)
     
     # check on test set
-    # model.eval()
+    X_test = full_test.iloc[:, : len(full_test.columns) - num_genres]
+    Y_test = full_test.iloc[:, len(full_test.columns) - num_genres:]
+    test_dataset = make_dataset(X_test.values, Y_test.values)
+    test_dataloader = DataLoader(dataset=test_dataset, shuffle=True, batch_size=32)
+
+    model.eval()
+    test_run_acc = []
+    test_run_cost = []
+    for i, (x_test, y_test) in enumerate(test_dataloader):
+        # get predictions
+        y_pred = model(x_test)
+        accuracy = []
+        for k, d in enumerate(y_pred, 0): 
+            acc = prediction_accuracy(torch.Tensor.cpu(y_test[k]), torch.Tensor.cpu(d))
+            accuracy.append(acc)
+        test_run_acc.append(np.asarray(accuracy).mean())
+        cost = criterion(y_pred, y_test)
+        test_run_cost.append(cost)
+    print('test set')
+    print(cost)
+    print(np.asarray(test_run_acc).mean())
+
+
