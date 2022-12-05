@@ -35,22 +35,23 @@ class multi_classifier(nn.Module):
         output = self.l2(output)
         return F.sigmoid(output)
 
-# predict for single track (unfinished)
-def predict(x, subgenres, model):
-    op = model(x)
-    op_b = torch.round(op)
-    op_b_np = torch.Tensor.cpu(op_b).detach().numpy()
-    preds = np.where(op_b_np == 1)[1]
-    sigs_op = torch.Tensor.cpu(torch.round((op)*100)).detach().numpy()[0]
-    o_p = np.argsort(torch.Tensor.cpu(op).detach().numpy())[0][::-1]
-    label = []
-    for i in preds:
-        label.append(subgenres[i])
-    arg_s = {}
-    for i in o_p:
-        arg_s[subgenres[int(i)]] = sigs_op[int(i)]
-    return label, list(arg_s.items())[:10]
+# prediction accuracy
+def prediction_accuracy(truth, predicted):
+    return torch.round(predicted).eq(truth).sum().numpy()/len(truth)
+
+
+# get single prediction
+def get_prediction(x, subgenres):
+    predict = torch.round(model(x)).numpy()
+    labels = []
+    for i in range(len(predict)):
+        if predict[i] == 1:
+            labels.append(subgenres[i])
+    print(labels)
+    return labels
     
+
+
 # evaluate using 10-fold cross-validation
 if __name__ == '__main__':
     # combine data
@@ -60,11 +61,12 @@ if __name__ == '__main__':
     sharedcolumns = list(set(data_p1.columns.values.tolist()) & set(data_p2.columns.values.tolist()) & set(data_val.columns.values.tolist()))
     full_train = data_p1[sharedcolumns].append(data_p2[sharedcolumns])
     full_train = full_train.apply(pd.to_numeric)
+    full_test = data_val[sharedcolumns]
     root = os.getcwd()
-    full_train.to_csv(f"{root}/data/rock_combinedd.csv")
+    full_train.to_csv(f"{root}/data/rock_combined.csv")
     
     # separate target values
-    num_genres = 75
+    num_genres = 74
     X = full_train.iloc[:, : len(full_train.columns) - num_genres]
     Y = full_train.iloc[:, len(full_train.columns) - num_genres:]
 
@@ -78,10 +80,16 @@ if __name__ == '__main__':
     # train and output predict loss after every 10 epochs
     epochs = 100
     costval = []
+    running_accuracy = []
     for j in range(epochs):
         for i, (x_train, y_train) in enumerate(dataloader):
-            # calculate loss
+            # get predictions
             y_pred = model(x_train)
+            accuracy = []
+            for k, d in enumerate(y_pred, 0): 
+                acc = prediction_accuracy(torch.Tensor.cpu(y_train[k]), torch.Tensor.cpu(d))
+                accuracy.append(acc)
+            running_accuracy.append(np.asarray(accuracy).mean())
             cost = criterion(y_pred, y_train)
             # backprop
             optimizer.zero_grad()
@@ -89,4 +97,8 @@ if __name__ == '__main__':
             optimizer.step()
         if j % 50 == 0:
             print(cost)
+            print(np.asarray(running_accuracy).mean())
             costval.append(cost)
+    
+    # check on test set
+    # model.eval()
