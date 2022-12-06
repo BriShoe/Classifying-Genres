@@ -29,9 +29,8 @@ listOfGenres = sorted(['rock---alternative', 'rock---indierock', 'rock---singers
                     'rock---psychedelicpop'])
 top_twelve_list = sorted(['rock---classicrock','rock---alternative','rock---indie', 'rock---punk', 'rock---alternativerock',
                     'rock---hardrock','rock---progressiverock','rock---singersongwriter', 'rock---indierock', 'rock---newwave', 'rock---postpunk', 'rock---psychedelicrock'])
-top_twelve_indices = []
-for i in range(12):
-    top_twelve_indices.append(listOfGenres.index(top_twelve_list[i]))
+top_twelve_indices = [listOfGenres.index(top_twelve_list[i]) for i in range(12)]
+
 
 # get dataset
 class make_dataset(Dataset):
@@ -75,9 +74,6 @@ def get_prediction(x, subgenres, model):
         labels.append(subgenres[i])
     print(labels)
     return labels
-
-def createOneHot(num):
-    return np.array([1 if i == num else 0 for i in range(74)])
 
 def print_confusion_matrix(confusion_matrix, axes, class_label, class_names, fontsize=14):
     df_cm = pd.DataFrame(confusion_matrix, index=class_names, columns=class_names)
