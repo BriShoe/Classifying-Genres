@@ -97,12 +97,12 @@ def bringrocktoback(df):
 
 if __name__ == "__main__":
     root = os.getcwd()
-    df = pd.read_csv(f"{root}/data/rock1edited2.csv")
+    df = pd.read_csv(f"{root}/data/rock1edited.csv")
     df2 = pd.read_csv(f"{root}/data/rock2edited.csv")
     df3 = pd.read_csv(f"{root}/data/rockvalidedited.csv")
 
     df.dropna(how="all", axis=1, inplace=True)
-    df = pd.get_dummies(df2, prefix=["tonal_chords_key", "tonal_chords_scale", "tonal_key_key", "tonal_key_scale"])
+    df = pd.get_dummies(df, prefix=["tonal_chords_key", "tonal_chords_scale", "tonal_key_key", "tonal_key_scale"])
     df2 = pd.get_dummies(df2, prefix=["tonal_chords_key", "tonal_chords_scale", "tonal_key_key", "tonal_key_scale"])
     df3 = pd.get_dummies(df3, prefix=["tonal_chords_key", "tonal_chords_scale", "tonal_key_key", "tonal_key_scale"])
 
@@ -121,3 +121,5 @@ if __name__ == "__main__":
     df.to_csv(f"{root}/data/rock1edited.csv")
     df2.to_csv(f"{root}/data/rock2edited.csv")
     df3.to_csv(f"{root}/data/rockvalidedited.csv")
+
+
