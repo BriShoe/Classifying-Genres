@@ -40,17 +40,18 @@ def plotGenres():
  'rock---jazzrock': 26, 'soundtrack---score': 2, 'rock---symphonicprog': 10, 'rock---glam': 14, 'rock---acousticrock': 8,
  'rock---psychedelicpop': 4, 'world': 2, 'soul---neosoul': 2})
     sortedGenres = np.array(sorted(genres.items(), key=lambda x: x[1], reverse=True))
-    genres = sortedGenres[:10]
-    topgenres, values = list(genres[:, 0]), list(genres[:, 1])
-    topgenres = [str[7:] for str in topgenres]
-    values = [int(num) for num in values]
-    plt.bar(topgenres, values, color='maroon', width=0.4, bottom=0)
-    plt.ylim(0, 2000)
-    plt.xlabel("Subgenres")
-    plt.ylabel("Number of Examples")
-    plt.xticks(rotation=45, ha="right")
-    plt.title("Top 10 Subgenres by Number of Examples Present in Dataset")
-    plt.savefig("../visualizations/top10examples.png", bbox_inches="tight")
+    genres = sortedGenres[:12]
+    print(genres)
+    #topgenres, values = list(genres[:, 0]), list(genres[:, 1])
+    #topgenres = [str[7:] for str in topgenres]
+    #values = [int(num) for num in values]
+    #plt.bar(topgenres, values, color='maroon', width=0.4, bottom=0)
+    #plt.ylim(0, 2000)
+    #plt.xlabel("Subgenres")
+    #plt.ylabel("Number of Examples")
+    #plt.xticks(rotation=45, ha="right")
+    #plt.title("Top 10 Subgenres by Number of Examples Present in Dataset")
+    #plt.savefig("../visualizations/top10examples.png", bbox_inches="tight")
 
 
 def valueHistogram():
@@ -106,4 +107,4 @@ def valueHistogram():
 
 
 if __name__ == "__main__":
-    valueHistogram()
+    plotGenres()    
