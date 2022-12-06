@@ -11,26 +11,14 @@ from torch.utils.data import Dataset, DataLoader
 from torch import nn
 import torch.nn.functional as F
 
-listOfGenres = sorted(['rock---alternative', 'rock---indierock', 'rock---singersongwriter',
-                    'rock---classicrock', 'rock---poprock', 'rock---progressiverock', 'rock---rockabilly', 'rock---rocknroll',
-                    'rock---hardcorepunk', 'rock---punk', 'rock---newwave', 'rock---postpunk', 'rock---alternativerock',
-                    'rock---indie', 'rock---hardrock', 'rock---hairmetal', 'rock---artrock', 'rock---bluesrock','rock---alternativepunk',
-                    'rock---latinrock', 'rock---powerpop', 'rock---indiepop', 'rock---psychobilly',
-                    'rock---stonerrock', 'rock---glamrock', 'rock---aor', 'rock---psychedelicrock', 'rock---britpop', 'rock---newromantic',
-                    'rock---emo', 'rock---softrock', 'rock---grunge', 'rock---pianorock', 'rock---american', 'rock---rockabillysoul',
-                    'rock---krautrock', 'rock---noisepop', 'rock---stoner', 'rock---garagerock', 'rock---lofi', 'rock---spacerock',
-                    'rock---indiefolk', 'rock---alternativemetal', 'rock---guitarvirtuoso', 'rock---powerballad', 'rock---symphonicrock',
-                    'rock---rockballad', 'rock---arenarock', 'rock---protopunk', 'rock---numetal', 'rock---rapcore', 'rock---funkrock',
-                    'rock---folkpunk', 'rock---surfrock',
-                    'rock---anarchopunk', 'rock---stonermetal', 'rock---southernrock', 'rock---poppunk', 'rock---jamband',
-                    'rock---funkmetal', 'rock---madchester', 'rock---britishinvasion', 'rock---chamberpop', 'rock---russianrock',
-                    'rock---experimentalrock', 'rock---melodicrock', 'rock---postgrunge', 'rock---horrorpunk', 'rock---streetpunk',
-                    'rock---jazzrock', 'rock---symphonicprog', 'rock---glam', 'rock---acousticrock',
-                    'rock---psychedelicpop'])
-top_twelve_list = sorted(['rock---classicrock','rock---alternative','rock---indie', 'rock---punk', 'rock---alternativerock',
-                    'rock---hardrock','rock---progressiverock','rock---singersongwriter', 'rock---indierock', 'rock---newwave', 'rock---postpunk', 'rock---psychedelicrock'])
-top_twelve_indices = [listOfGenres.index(top_twelve_list[i]) for i in range(12)]
-
+listOfGenres = sorted(['rock---alternative', 'rock---alternativerock', 'rock---bluesrock',
+ 'rock---britpop', 'rock---classicrock', 'rock---garagerock',
+ 'rock---glamrock', 'rock---grunge', 'rock---hardrock', 'rock---indie',
+ 'rock---indiepop', 'rock---indierock', 'rock---newwave', 'rock---poprock',
+ 'rock---postpunk', 'rock---progressiverock', 'rock---psychedelicrock',
+ 'rock---punk', 'rock---rockabilly', 'rock---rocknroll',
+ 'rock---singersongwriter', 'rock---softrock', 'rock---spacerock',
+ 'rock---stonerrock'])
 
 # get dataset
 class make_dataset(Dataset):
@@ -57,6 +45,42 @@ class multi_classifier(nn.Module):
         output = self.l1(x)
         output = self.l2(output)
         return F.sigmoid(output)
+
+# train epoch
+def train_epoch(model, dataloader, criterion, optimizer):
+    train_loss = 0.0
+    train_accuracy = []
+    for x_train, y_train in dataloader:
+        y_pred = model(x_train)
+        accuracy = []
+        for k, d in enumerate(y_pred, 0): 
+            acc = prediction_accuracy(torch.Tensor.cpu(y_train[k]), torch.Tensor.cpu(d))
+            accuracy.append(acc)
+        train_accuracy.append(np.asarray(accuracy).mean())
+        cost = criterion(y_pred, y_train)
+        # backprop
+        optimizer.zero_grad()
+        cost.backward()
+        optimizer.step()
+        train_loss += cost.item() * x_train.size(0) # uncertain about this
+    train_acc = np.asarray(train_accuracy).mean()
+    return train_loss, train_acc
+
+def valid_epoch(model,dataloader,criterion):
+    model.eval()
+    valid_loss = 0.0
+    valid_accuracy = []
+    for x_valid, y_valid in dataloader:
+        y_pred = model(x_valid)
+        accuracy = []
+        for k, d in enumerate(y_pred, 0): 
+            acc = prediction_accuracy(torch.Tensor.cpu(y_valid[k]), torch.Tensor.cpu(d))
+            accuracy.append(acc)
+        valid_accuracy.append(np.asarray(accuracy).mean())
+        cost = criterion(y_pred, y_valid)
+        valid_loss += cost.item() * x_valid.size(0) # uncertain about this
+    valid_acc = np.asarray(valid_accuracy).mean()
+    return valid_loss, valid_acc
 
 # prediction accuracy
 def prediction_accuracy(truth, predicted):
@@ -87,16 +111,19 @@ def print_confusion_matrix(confusion_matrix, axes, class_label, class_names, fon
     axes.set_xlabel('Predicted')
     axes.set_title(class_label)
 
+
+
+
 # evaluate using 10-fold cross-validation
 if __name__ == '__main__':
     # combine data
-    data_p1 = pd.read_csv('data/rock1edited.csv', index_col = 0)
-    data_p2 = pd.read_csv('data/rock2edited.csv', index_col = 0)
+    data_p1 = pd.read_csv('data/rock1edited_filtered.csv', index_col = 0)
+    data_p2 = pd.read_csv('data/rock2edited_filtered.csv', index_col = 0)
     full_train = data_p1.append(data_p2)
-    full_test = pd.read_csv('data/rockvalidedited.csv', index_col = 0)
+    full_test = pd.read_csv('data/rockvalidedited_filtered.csv', index_col = 0)
     
     # separate target values
-    num_genres = 74
+    num_genres = 24
     X = full_train.iloc[:, : len(full_train.columns) - num_genres]
     Y = full_train.iloc[:, len(full_train.columns) - num_genres:]
 
@@ -166,11 +193,9 @@ if __name__ == '__main__':
     #Confusion Matrix
     print(classification_report(y_truths, y_predicts, target_names=listOfGenres))
     cf_matrix = multilabel_confusion_matrix(y_truths, y_predicts)
-    fig, ax = plt.subplots(3, 4, figsize=(12, 7))
-    top_twelve_confusion = [cf_matrix[i] for i in top_twelve_indices]
-    
+    fig, ax = plt.subplots(4, 6, figsize=(12, 7))
 
-    for axes, cfs_matrix, label in zip(ax.flatten(), top_twelve_confusion, top_twelve_list):
+    for axes, cfs_matrix, label in zip(ax.flatten(), cf_matrix, listOfGenres):
         print_confusion_matrix(cfs_matrix, axes, label, ["N", "Y"])
     
     fig.tight_layout()
