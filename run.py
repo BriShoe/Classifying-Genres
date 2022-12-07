@@ -1,12 +1,9 @@
-import os
 import numpy as np
 import pandas as pd
 from sklearn.preprocessing import scale
-from sklearn.model_selection import train_test_split
-from sklearn import metrics
 import torch
 from torch import nn
-from test_multilabel_nn_pca import make_dataset, fitPCA, prediction_accuracy, multi_classifier
+from train.test_multilabel_nn_pca import make_dataset, fitPCA, prediction_accuracy, multi_classifier
 from torch.utils.data import DataLoader
 
 def randomizetargets(dataset, numTargets):

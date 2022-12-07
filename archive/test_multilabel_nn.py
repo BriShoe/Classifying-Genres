@@ -53,7 +53,7 @@ def train_epoch(model, dataloader, criterion, optimizer):
     for x_train, y_train in dataloader:
         y_pred = model(x_train)
         accuracy = []
-        for k, d in enumerate(y_pred, 0): 
+        for k, d in enumerate(y_pred, 0):
             acc = prediction_accuracy(torch.Tensor.cpu(y_train[k]), torch.Tensor.cpu(d))
             accuracy.append(acc)
         train_accuracy.append(np.asarray(accuracy).mean())
@@ -73,7 +73,7 @@ def valid_epoch(model,dataloader,criterion):
     for x_valid, y_valid in dataloader:
         y_pred = model(x_valid)
         accuracy = []
-        for k, d in enumerate(y_pred, 0): 
+        for k, d in enumerate(y_pred, 0):
             acc = prediction_accuracy(torch.Tensor.cpu(y_valid[k]), torch.Tensor.cpu(d))
             accuracy.append(acc)
         valid_accuracy.append(np.asarray(accuracy).mean())
@@ -117,10 +117,10 @@ def print_confusion_matrix(confusion_matrix, axes, class_label, class_names, fon
 # evaluate using 10-fold cross-validation
 if __name__ == '__main__':
     # combine data
-    data_p1 = pd.read_csv('data/rock1edited_filtered.csv', index_col = 0)
-    data_p2 = pd.read_csv('data/rock2edited_filtered.csv', index_col = 0)
+    data_p1 = pd.read_csv('../data/rock1edited_filtered.csv', index_col = 0)
+    data_p2 = pd.read_csv('../data/rock2edited_filtered.csv', index_col = 0)
     full_train = data_p1.append(data_p2)
-    full_test = pd.read_csv('data/rockvalidedited_filtered.csv', index_col = 0)
+    full_test = pd.read_csv('../data/rockvalidedited_filtered.csv', index_col = 0)
     
     # separate target values
     num_genres = 24

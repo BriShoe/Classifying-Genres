@@ -178,7 +178,7 @@ if __name__ == '__main__':
         criterion = nn.BCELoss()
         optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
 
-        for epoch in range(20):
+        for epoch in range(100):
             train_loss, train_acc = train_epoch(model, train_loader, criterion,
                                                 optimizer)
             test_loss, test_acc = valid_epoch(model, test_loader, criterion)

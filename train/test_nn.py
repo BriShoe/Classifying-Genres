@@ -33,7 +33,7 @@ class make_dataset(Dataset):
 
 if __name__ == '__main__':
     # load data (x)
-    data = pd.read_csv('data/old/list_of_arctic.csv', index_col=0)
+    data = pd.read_csv('../data/old/list_of_arctic.csv', index_col=0)
     # random labels (y)
     target = np.array([1 if i % 2 == 0 else 0 for i in range(179)])
     print(data.shape)

@@ -3,8 +3,7 @@ import pandas as pd
 import numpy as np
 from sklearn.metrics import confusion_matrix
 import matplotlib.pyplot as plt
-import seaborn as sns
-from test_multilabel_nn import print_confusion_matrix, classification_report
+from archive.test_multilabel_nn import print_confusion_matrix, classification_report
 
 
 if __name__ == "__main__":
@@ -41,7 +40,7 @@ if __name__ == "__main__":
     totalYpred = np.reshape(totalYpred, (1862, 24)).astype(int)
     print(Y_test.shape, totalYpred.shape)
 
-    with open("logregclassification_report.txt", "a") as f:
+    with open("../results/classification_reports/logregclassification_report.txt", "a") as f:
         f.write(classification_report(Y_test, totalYpred, target_names=genres))
 
     fig.tight_layout()
