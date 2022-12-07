@@ -10,7 +10,6 @@ import matplotlib.pyplot as plt
 from torch.utils.data import Dataset, DataLoader, SubsetRandomSampler
 from torch import nn
 import torch.nn.functional as F
-
 from multilabel_cross_val import crossvalidation
 
 listOfGenres = sorted([
@@ -140,10 +139,9 @@ def print_confusion_matrix(confusion_matrix,
 
 # evaluate using 10-fold cross-validation
 if __name__ == '__main__':
-    numcolumns = [100]
     # combine data
-    data_p1 = pd.read_csv('data/rock1edited_filtered.csv', index_col=0)
-    data_p2 = pd.read_csv('data/rock2edited_filtered.csv', index_col=0)
+    data_p1 = pd.read_csv('../data/rock1edited_filtered.csv', index_col=0)
+    data_p2 = pd.read_csv('../data/rock2edited_filtered.csv', index_col=0)
     full_train = data_p1.append(data_p2)
     # separate target values and get random splits
     num_genres = 24
@@ -151,19 +149,14 @@ if __name__ == '__main__':
     Y = full_train.iloc[:, len(full_train.columns) - num_genres:]
 
     hyperparameters = np.array([])
-    for num in numcolumns:
-        crossoutput = crossvalidation(X, Y, [16, 32], [100], [0.001],
-                                      [32, 64, 256])
-        print(crossoutput)
-        hyperparameters = np.append(hyperparameters, crossoutput)
+    crossoutput = crossvalidation(X, Y, [16, 32], [100], [0.001], [32, 64])
+    print(crossoutput)
+    hyperparameters = np.append(hyperparameters, crossoutput)
     hyperparameters = sorted(hyperparameters, key=lambda x: x["f1-score"])
-    batchsize, epochs, learningrate, neurons = hyperparameters[0][
-        "hyperparameters"]
+    batchsize, epochs, learningrate, neurons = hyperparameters[0]["hyperparameters"]
 
     dataset = make_dataset(X.values, Y.values)
-    dataloader = DataLoader(dataset=dataset,
-                            shuffle=True,
-                            batch_size=batchsize)
+    dataloader = DataLoader(dataset=dataset, shuffle=True, batch_size=batchsize)
     model = multi_classifier(len(X.columns), neurons, num_genres)
     # binary cross entropy loss
     criterion = nn.BCELoss()
@@ -178,8 +171,7 @@ if __name__ == '__main__':
             y_pred = model(x_train)
             accuracy = []
             for k, d in enumerate(y_pred, 0):
-                acc = prediction_accuracy(torch.Tensor.cpu(y_train[k]),
-                                          torch.Tensor.cpu(d))
+                acc = prediction_accuracy(torch.Tensor.cpu(y_train[k]), torch.Tensor.cpu(d))
                 accuracy.append(acc)
             running_accuracy.append(np.asarray(accuracy).mean())
             cost = criterion(y_pred, y_train)
@@ -192,8 +184,7 @@ if __name__ == '__main__':
             print(np.asarray(running_accuracy).mean())
             costval.append(cost)
 
-    with open(f"models/neuralnetworks/nn_baseline.txt", "a") as f:
-        f.write(
-            f"Number of Features: {len(X.columns)} \nBatch Size: {batchsize} \nEpochs: {epochs} \nLearning Rate: {learningrate} \nNeurons: {neurons}"
-        )
-    torch.save(model.state_dict(), f"models/neuralnetworks/nn_baseline")
+    with open(f"../models/neuralnetworks/nn_baseline.txt", "a") as f:
+        f.truncate(0)
+        f.write(f"Number of Features: {len(X.columns)} \nBatch Size: {batchsize} \nEpochs: {epochs} \nLearning Rate: {learningrate} \nNeurons: {neurons}")
+    torch.save(model.state_dict(), f"../models/neuralnetworks/nn_baseline")
