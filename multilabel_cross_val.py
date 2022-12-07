@@ -55,6 +55,7 @@ class multi_classifier(nn.Module):
 def train_epoch(model, dataloader, criterion, optimizer):
     train_loss = 0.0
     train_accuracy = []
+    model.train()
     for x_train, y_train in dataloader:
         y_pred = model(x_train)
         accuracy = []
@@ -216,13 +217,22 @@ if __name__ == '__main__':
         "Average Training Loss: {:.4f} \t Average Test Loss: {:.4f} \t Average Training Acc: {:.6f} \t Average Test Acc: {:.6f}"
         .format(avg_train_loss, avg_test_loss, avg_train_acc, avg_test_acc))
 
+    # save model
+    torch.save(model.state_dict(), f"models/neuralnetworks/nn_baseline")
+
     # get confusion matrix and precision/recall metrics
     print('bluuuuu')
     print(y_predicts[0], len(y_predicts), y_truths[0])
 
     #Confusion Matrix
-    print(
-        classification_report(y_truths, y_predicts, target_names=listOfGenres))
+    report = classification_report(y_truths,
+                                   y_predicts,
+                                   target_names=listOfGenres)
+    print(report)
+    with open("../results/classification_reports/nn_classification_report.txt",
+              "a") as f:
+        f.write(report)
+
     cf_matrix = multilabel_confusion_matrix(y_truths, y_predicts)
     fig, ax = plt.subplots(4, 6, figsize=(12, 7))
 
