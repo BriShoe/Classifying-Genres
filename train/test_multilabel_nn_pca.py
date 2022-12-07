@@ -1,10 +1,16 @@
 #importing libraries
 import pandas as pd
+from sklearn.decomposition import PCA
 import torch
 import numpy as np
 from torch.utils.data import DataLoader
 from torch import nn
 from archive.test_multilabel_nn import make_dataset, multi_classifier, prediction_accuracy, get_prediction
+
+def fitPCA(X, k):
+    pca = PCA(n_components=k)
+    pca.fit(X)
+    return pca
 
 # evaluate using 10-fold cross-validation
 if __name__ == '__main__':
