@@ -111,6 +111,7 @@ def get_prediction(x, subgenres, model):
     return labels
 
 
+# print confusion matrix
 def print_confusion_matrix(confusion_matrix,
                            axes,
                            class_label,
@@ -229,7 +230,7 @@ if __name__ == '__main__':
                                    y_predicts,
                                    target_names=listOfGenres)
     print(report)
-    with open("../results/classification_reports/nn_classification_report.txt",
+    with open("results/classification_reports/nn_classification_report.txt",
               "a") as f:
         f.write(report)
 
