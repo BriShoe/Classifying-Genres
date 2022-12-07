@@ -3,7 +3,7 @@ import pandas as pd
 from sklearn.preprocessing import scale
 import torch
 from torch import nn
-from train.test_multilabel_nn_pca import make_dataset, fitPCA, prediction_accuracy, multi_classifier
+from train.train_multilabel_nn_pca import make_dataset, fitPCA, prediction_accuracy, multi_classifier
 from torch.utils.data import DataLoader
 
 def randomizetargets(dataset, numTargets):

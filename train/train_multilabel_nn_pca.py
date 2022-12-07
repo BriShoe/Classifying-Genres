@@ -11,6 +11,7 @@ from torch.utils.data import Dataset, DataLoader, SubsetRandomSampler
 from torch import nn
 import torch.nn.functional as F
 from multilabel_cross_val import crossvalidation
+from sklearn.decomposition import PCA
 
 listOfGenres = sorted([
     'rock---alternative', 'rock---alternativerock', 'rock---bluesrock',
@@ -137,9 +138,14 @@ def print_confusion_matrix(confusion_matrix,
     axes.set_title(class_label)
 
 
+def fitPCA(X, k):
+    pca = PCA(n_components=k)
+    pca.fit(X)
+    return pca
+
+
 # evaluate using 10-fold cross-validation
 if __name__ == '__main__':
-    reducedcolumns = np.loadtxt("../reduce/logregtop100.txt", dtype=str)
     numcolumns = [100]
     # combine data
     data_p1 = pd.read_csv('../data/rock1edited_filtered.csv', index_col=0)
@@ -152,20 +158,19 @@ if __name__ == '__main__':
     hyperparameters = np.array([])
     for num in numcolumns:
         X = full_train.iloc[:, :len(full_train.columns) - num_genres]
-        X = X[reducedcolumns[:num]]
-        crossoutput = crossvalidation(X, Y, [16, 32], [1], [0.001], [32, 64])
+        pca = fitPCA(X, num)
+        X = pd.DataFrame(pca.transform(X))
+        crossoutput = crossvalidation(X, Y, [16, 32], [10], [0.001], [32, 64])
         crossoutput["numfeatures"] = num
         print(crossoutput)
         hyperparameters = np.append(hyperparameters, crossoutput)
     hyperparameters = sorted(hyperparameters, key=lambda x: x["f1-score"])
-    print(hyperparameters)
     optimalfeatures = hyperparameters[0]["numfeatures"]
-    print(optimalfeatures)
     batchsize, epochs, learningrate, neurons = hyperparameters[0]["hyperparameters"]
-    print(hyperparameters[0]["hyperparameters"])
 
     X = full_train.iloc[:, :len(full_train.columns) - num_genres]
-    X = X[reducedcolumns[:optimalfeatures]]
+    pca = fitPCA(X, optimalfeatures)
+    X = pd.DataFrame(pca.transform(X))
 
     dataset = make_dataset(X.values, Y.values)
     dataloader = DataLoader(dataset=dataset, shuffle=True, batch_size=batchsize)
@@ -196,6 +201,6 @@ if __name__ == '__main__':
             print(np.asarray(running_accuracy).mean())
             costval.append(cost)
 
-    with open("../models/neuralnetworks/nn_logreg_{optimalfeatures}features.txt", "a") as f:
-        f.write(f"Number of Features: {optimalfeatures}\nBatch Size: {batchsize} \nEpochs: {epochs} \nLearning Rate: {learningrate} \nNeurons: {neurons}")
-    torch.save(model.state_dict(), f"../models/neuralnetworks/nn_logreg_{optimalfeatures}features")
+    with open(f"../models/neuralnetworks/nn_pca_{optimalfeatures}features.txt", "a") as f:
+        f.write(f"Number of Features: {optimalfeatures} \nBatch Size: {batchsize} \nEpochs: {epochs} \nLearning Rate: {learningrate} \nNeurons: {neurons}")
+    torch.save(model.state_dict(), f"../models/neuralnetworks/nn_pca_{optimalfeatures}features")
