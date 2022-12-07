@@ -151,7 +151,7 @@ if __name__ == '__main__':
 
     hyperparameters = np.array([])
     for num in numcolumns:
-        crossoutput = crossvalidation(X, Y, [16, 32], [10], [0.001], [32, 64])
+        crossoutput = crossvalidation(X, Y, [16, 32], [100], [0.001], [32, 64])
         print(crossoutput)
         hyperparameters = np.append(hyperparameters, crossoutput)
     hyperparameters = sorted(hyperparameters, key=lambda x: x["f1-score"])

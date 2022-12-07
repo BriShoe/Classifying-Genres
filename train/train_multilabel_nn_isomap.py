@@ -160,7 +160,7 @@ if __name__ == '__main__':
         X = full_train.iloc[:, :len(full_train.columns) - num_genres]
         isomap = fitIsomap(X, num)
         X = pd.DataFrame(isomap.transform(X))
-        crossoutput = crossvalidation(X, Y, [16, 32], [10], [0.001], [32, 64])
+        crossoutput = crossvalidation(X, Y, [16, 32], [100], [0.001], [32, 64])
         crossoutput["numfeatures"] = num
         print(crossoutput)
         hyperparameters = np.append(hyperparameters, crossoutput)

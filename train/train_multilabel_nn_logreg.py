@@ -153,7 +153,7 @@ if __name__ == '__main__':
     for num in numcolumns:
         X = full_train.iloc[:, :len(full_train.columns) - num_genres]
         X = X[reducedcolumns[:num]]
-        crossoutput = crossvalidation(X, Y, [16, 32], [1], [0.001], [32, 64])
+        crossoutput = crossvalidation(X, Y, [16, 32], [100], [0.001], [32, 64])
         crossoutput["numfeatures"] = num
         print(crossoutput)
         hyperparameters = np.append(hyperparameters, crossoutput)
