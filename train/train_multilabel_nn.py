@@ -3,13 +3,14 @@ import pandas as pd
 import torch
 import os
 import seaborn as sns
-from sklearn.metrics import classification_report
-from sklearn.metrics import multilabel_confusion_matrix
+from sklearn.metrics import classification_report, multilabel_confusion_matrix
+from sklearn.model_selection import KFold
 import numpy as np
 import matplotlib.pyplot as plt
-from torch.utils.data import Dataset, DataLoader
+from torch.utils.data import Dataset, DataLoader, SubsetRandomSampler
 from torch import nn
 import torch.nn.functional as F
+from multilabel_cross_val import crossvalidation
 
 listOfGenres = sorted([
     'rock---alternative', 'rock---alternativerock', 'rock---bluesrock',
@@ -39,11 +40,11 @@ class make_dataset(Dataset):
 
 # get model
 class multi_classifier(nn.Module):
-    def __init__(self, input_size, output_size):
+    def __init__(self, input_size, neurons, output_size):
         super(multi_classifier, self).__init__()
-        self.l1 = nn.Sequential(nn.Linear(input_size, 256), nn.ReLU(),
+        self.l1 = nn.Sequential(nn.Linear(input_size, neurons), nn.ReLU(),
                                 nn.Dropout(0.5))
-        self.l2 = nn.Linear(256, output_size)
+        self.l2 = nn.Linear(neurons, output_size)
 
     def forward(self, x):
         output = self.l1(x)
@@ -55,6 +56,7 @@ class multi_classifier(nn.Module):
 def train_epoch(model, dataloader, criterion, optimizer):
     train_loss = 0.0
     train_accuracy = []
+    model.train()
     for x_train, y_train in dataloader:
         y_pred = model(x_train)
         accuracy = []
@@ -137,27 +139,32 @@ def print_confusion_matrix(confusion_matrix,
 
 # evaluate using 10-fold cross-validation
 if __name__ == '__main__':
+    numcolumns = [100]
     # combine data
     data_p1 = pd.read_csv('../data/rock1edited_filtered.csv', index_col=0)
     data_p2 = pd.read_csv('../data/rock2edited_filtered.csv', index_col=0)
     full_train = data_p1.append(data_p2)
-    full_test = pd.read_csv('../data/rockvalidedited_filtered.csv',
-                            index_col=0)
-
-    # separate target values
+    # separate target values and get random splits
     num_genres = 24
     X = full_train.iloc[:, :len(full_train.columns) - num_genres]
     Y = full_train.iloc[:, len(full_train.columns) - num_genres:]
 
+    hyperparameters = np.array([])
+    for num in numcolumns:
+        crossoutput = crossvalidation(X, Y, [16, 32], [10], [0.001], [32, 64])
+        print(crossoutput)
+        hyperparameters = np.append(hyperparameters, crossoutput)
+    hyperparameters = sorted(hyperparameters, key=lambda x: x["f1-score"])
+    batchsize, epochs, learningrate, neurons = hyperparameters[0]["hyperparameters"]
+
     dataset = make_dataset(X.values, Y.values)
-    dataloader = DataLoader(dataset=dataset, shuffle=True, batch_size=32)
-    model = multi_classifier(len(full_train.columns) - num_genres, num_genres)
+    dataloader = DataLoader(dataset=dataset, shuffle=True, batch_size=batchsize)
+    model = multi_classifier(len(X.columns), neurons, num_genres)
     # binary cross entropy loss
     criterion = nn.BCELoss()
-    optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
+    optimizer = torch.optim.Adam(model.parameters(), lr=learningrate)
 
     # train and output predict loss after every 10 epochs
-    epochs = 100
     costval = []
     running_accuracy = []
     for j in range(epochs):
@@ -166,8 +173,7 @@ if __name__ == '__main__':
             y_pred = model(x_train)
             accuracy = []
             for k, d in enumerate(y_pred, 0):
-                acc = prediction_accuracy(torch.Tensor.cpu(y_train[k]),
-                                          torch.Tensor.cpu(d))
+                acc = prediction_accuracy(torch.Tensor.cpu(y_train[k]), torch.Tensor.cpu(d))
                 accuracy.append(acc)
             running_accuracy.append(np.asarray(accuracy).mean())
             cost = criterion(y_pred, y_train)
@@ -180,63 +186,6 @@ if __name__ == '__main__':
             print(np.asarray(running_accuracy).mean())
             costval.append(cost)
 
-    # check on test set
-    X_test = full_test.iloc[:, :len(full_test.columns) - num_genres]
-    Y_test = full_test.iloc[:, len(full_test.columns) - num_genres:]
-    test_dataset = make_dataset(X_test.values, Y_test.values)
-    test_dataloader = DataLoader(dataset=test_dataset,
-                                 shuffle=False,
-                                 batch_size=1)
-
-    model.eval()
-    test_run_acc = []
-    test_run_cost = []
-    y_predicts = np.zeros(shape=(len(full_test), num_genres))
-    row = 0
-    y_truths = Y_test.to_numpy()
-    for i, (x_test, y_test) in enumerate(test_dataloader):
-        # get predictions
-        y_pred = model(x_test)
-
-        res = torch.round(y_pred)
-        res = torch.Tensor.cpu(res).detach().numpy()
-        y_predicts[row] = res
-        row += res.shape[0]
-
-        accuracy = []
-        for k, d in enumerate(y_pred, 0):
-            acc = prediction_accuracy(torch.Tensor.cpu(y_test[k]),
-                                      torch.Tensor.cpu(d))
-            accuracy.append(acc)
-        test_run_acc.append(np.asarray(accuracy).mean())
-        cost = criterion(y_pred, y_test)
-        test_run_cost.append(cost)
-    print('test set')
-    print(cost)
-    print(np.asarray(test_run_acc).mean())
-    print(y_predicts[0], len(y_predicts))
-
-    #Confusion Matrix
-    print(
-        classification_report(y_truths, y_predicts, target_names=listOfGenres))
-    cf_matrix = multilabel_confusion_matrix(y_truths, y_predicts)
-    fig, ax = plt.subplots(4, 6, figsize=(12, 7))
-
-    for axes, cfs_matrix, label in zip(ax.flatten(), cf_matrix, listOfGenres):
-        print_confusion_matrix(cfs_matrix, axes, label, ["N", "Y"])
-
-    fig.tight_layout()
-    plt.savefig('visualizations/output.png')
-    plt.show()
-
-    # test examples
-    X_test = full_test.iloc[69, :len(full_test.columns) - num_genres]
-    Y_test = full_test.iloc[69, len(full_test.columns) - num_genres:]
-    print('truths', Y_test)
-    get_prediction(X_test, listOfGenres, model)
-
-    X_test = full_test.iloc[209, :len(full_test.columns) - num_genres]
-    Y_test = full_test.iloc[209, len(full_test.columns) - num_genres:]
-    print('truths', Y_test)
-
-    get_prediction(X_test, listOfGenres, model)
+    with open(f"../models/neuralnetworks/nn_baseline.txt", "a") as f:
+        f.write(f"Number of Features: {len(X.columns)} \nBatch Size: {batchsize} \nEpochs: {epochs} \nLearning Rate: {learningrate} \nNeurons: {neurons}")
+    torch.save(model.state_dict(), f"../models/neuralnetworks/nn_baseline")
