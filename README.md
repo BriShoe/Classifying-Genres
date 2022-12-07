@@ -1,6 +1,6 @@
 # Classifying-Genres
 
-Multi-label subgenre classification with feature reduction techniques and a 2 layer feed forward neural network. 
+Multi-label subgenre classification with feature reduction techniques and a 3 layer feed forward neural network. 
 
 ## Background ##
 
