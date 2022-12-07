@@ -41,13 +41,16 @@ class make_dataset(Dataset):
 class multi_classifier(nn.Module):
     def __init__(self, input_size, neurons, output_size):
         super(multi_classifier, self).__init__()
-        self.l1 = nn.Sequential(nn.Linear(input_size, neurons), nn.ReLU(),
+        self.l1 = nn.Sequential(nn.Linear(input_size, neurons[0]), nn.ReLU(),
                                 nn.Dropout(0.5))
-        self.l2 = nn.Linear(neurons, output_size)
+        self.l2 = nn.Sequential(nn.Linear(neurons[0], neurons[1]), nn.ReLU(),
+                                nn.Dropout(0.5))
+        self.l3 = nn.Linear(neurons[1], output_size)
 
     def forward(self, x):
         output = self.l1(x)
         output = self.l2(output)
+        output = self.l3(output)
         return F.sigmoid(output)
 
 
@@ -141,11 +144,14 @@ def print_confusion_matrix(confusion_matrix,
 def crossvalidation(X, Y, batchsizes, epochs, learningrates, neurons):
     # combine data
     performance = dict()
-    for variableset in [(batchsize, epoch, learningrate, neuron) for batchsize in batchsizes
-                        for epoch in epochs for learningrate in learningrates for neuron in neurons]:
+    for variableset in [(batchsize, epoch, learningrate, neuron)
+                        for batchsize in batchsizes for epoch in epochs
+                        for learningrate in learningrates
+                        for neuron in neurons]:
         # separate target values and get random splits
-        print(f"Running Cross Validation on Batchsize = {variableset[0]}, Epochs = {variableset[1]}, "
-              f"Learning Rate = {variableset[2]}, Neurons = {variableset[3]}")
+        print(
+            f"Running Cross Validation on Batchsize = {variableset[0]}, Epochs = {variableset[1]}, "
+            f"Learning Rate = {variableset[2]}, Neurons = {variableset[3]}")
         num_genres = 24
 
         dataset = make_dataset(X.values, Y.values)
@@ -162,8 +168,8 @@ def crossvalidation(X, Y, batchsizes, epochs, learningrates, neurons):
         y_predicts = np.empty(shape=(len(X), num_genres))
         y_truths = np.empty(shape=(len(X), num_genres))
         row = 0
-        for fold, (train_idx,
-                   val_idx) in enumerate(splits.split(np.arange(len(dataset)))):
+        for fold, (train_idx, val_idx) in enumerate(
+                splits.split(np.arange(len(dataset)))):
             print('Fold {}'.format(fold + 1))
             train_sampler = SubsetRandomSampler(train_idx)
             test_sampler = SubsetRandomSampler(val_idx)
@@ -174,16 +180,17 @@ def crossvalidation(X, Y, batchsizes, epochs, learningrates, neurons):
                                      batch_size=batch_size,
                                      sampler=test_sampler)
 
-            model = multi_classifier(
-                len(X.columns), variableset[3], num_genres)
+            model = multi_classifier(len(X.columns), variableset[3],
+                                     num_genres)
             # binary cross entropy loss
             criterion = nn.BCELoss()
             optimizer = torch.optim.Adam(model.parameters(), lr=variableset[2])
 
             for epoch in range(variableset[1]):
-                train_loss, train_acc = train_epoch(model, train_loader, criterion,
-                                                    optimizer)
-                test_loss, test_acc = valid_epoch(model, test_loader, criterion)
+                train_loss, train_acc = train_epoch(model, train_loader,
+                                                    criterion, optimizer)
+                test_loss, test_acc = valid_epoch(model, test_loader,
+                                                  criterion)
 
                 train_loss = train_loss / len(train_loader.sampler)
                 test_loss = test_loss / len(test_loader.sampler)
@@ -191,8 +198,8 @@ def crossvalidation(X, Y, batchsizes, epochs, learningrates, neurons):
                 if (epoch + 1) % 10 == 0:
                     print(
                         "Epoch: {}/{} AVG Training Loss: {:.3f} AVG Test Loss: {:.3f} AVG Training Acc {:.6f} AVG Test Acc {:.6f} %"
-                        .format(epoch + 1, 100, train_loss, test_loss, train_acc,
-                                test_acc))
+                        .format(epoch + 1, 100, train_loss, test_loss,
+                                train_acc, test_acc))
             history['train_loss'].append(train_loss)
             history['test_loss'].append(test_loss)
             history['train_acc'].append(train_acc)
@@ -216,12 +223,22 @@ def crossvalidation(X, Y, batchsizes, epochs, learningrates, neurons):
         print('Performance of {} fold cross validation'.format(10))
         print(
             "Average Training Loss: {:.4f} \t Average Test Loss: {:.4f} \t Average Training Acc: {:.6f} \t Average Test Acc: {:.6f}"
-            .format(avg_train_loss, avg_test_loss, avg_train_acc, avg_test_acc))
-        classreport = classification_report(y_truths, y_predicts, target_names=listOfGenres, output_dict=True)
+            .format(avg_train_loss, avg_test_loss, avg_train_acc,
+                    avg_test_acc))
+        classreport = classification_report(y_truths,
+                                            y_predicts,
+                                            target_names=listOfGenres,
+                                            output_dict=True)
         performance[variableset] = classreport["micro avg"]["f1-score"]
-    performances = sorted(performance.items(), key=lambda x: x[1], reverse=True)
+    performances = sorted(performance.items(),
+                          key=lambda x: x[1],
+                          reverse=True)
     print(performances)
-    return {"hyperparameters": performances[0][0], "f1-score": performances[1][1]}
+    return {
+        "hyperparameters": performances[0][0],
+        "f1-score": performances[1][1]
+    }
+
 
 if __name__ == "__main__":
     data_p1 = pd.read_csv('data/rock1edited_filtered.csv', index_col=0)
@@ -233,7 +250,8 @@ if __name__ == "__main__":
     X = full_train.iloc[:, :len(full_train.columns) - num_genres]
     Y = full_train.iloc[:, len(full_train.columns) - num_genres:]
 
-    print("Best Hyperparamters: ", crossvalidation(X, Y, [16, 32], [1], [0.001], [256]))
+    print("Best Hyperparamters: ",
+          crossvalidation(X, Y, [16, 32], [1], [0.001], [(64, 32), (96, 48)]))
 
     # save model
     #torch.save(model.state_dict(), f"models/neuralnetworks/nn_baseline")

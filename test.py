@@ -41,7 +41,7 @@ def fitLLE(X, k):
 
 
 if __name__ == "__main__":
-    modelname = "logreg"
+    modelname = "baseline"
 
     PATH = f"models/neuralnetworks/nn_{modelname}"
     num_genres = 24
@@ -109,9 +109,14 @@ if __name__ == "__main__":
     print(y_predicts[0], len(y_predicts))
 
     # Confusion Matrix
-    with open(f"results/classification_reports/{modelname}_classification_report.txt", "a") as f:
+    with open(
+            f"results/classification_reports/{modelname}_classification_report.txt",
+            "a") as f:
         f.truncate(0)
-        f.write(classification_report(y_truths, y_predicts, target_names=listOfGenres))
+        f.write(
+            classification_report(y_truths,
+                                  y_predicts,
+                                  target_names=listOfGenres))
     cf_matrix = multilabel_confusion_matrix(y_truths, y_predicts)
     fig, ax = plt.subplots(4, 6, figsize=(12, 7))
 
@@ -121,5 +126,3 @@ if __name__ == "__main__":
     fig.tight_layout()
     plt.savefig(f'results/cf_matrices/{modelname}_cfmatrix.png')
     plt.show()
-
-
