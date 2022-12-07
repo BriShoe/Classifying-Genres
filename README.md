@@ -4,7 +4,7 @@ Multi-label subgenre classification with feature reduction techniques and a 3 la
 
 ## Background ##
 
-This project attempts to classify rock songs into 24 subgenres with the possibility of multiple subgenres per song. As far is known, this is the first attempt at leveraging machine learning for multi-label and subgenre music classification.
+This project attempts to classify rock songs into 24 subgenres with the possibility of multiple subgenres per song.
 
 ## Setup and Running ##
 
