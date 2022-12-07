@@ -202,7 +202,6 @@ if __name__ == '__main__':
     plt.savefig('visualizations/output.png')
     plt.show()
 
-    
     X_test = full_test.iloc[1, : len(full_test.columns) - num_genres]
     Y_test = full_test.iloc[1, len(full_test.columns) - num_genres:]
     get_prediction(X_test, listOfGenres, model)
