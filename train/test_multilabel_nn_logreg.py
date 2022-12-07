@@ -197,5 +197,5 @@ if __name__ == '__main__':
             costval.append(cost)
 
     with open("../models/neuralnetworks/nn_logreg_{optimalfeatures}features.txt", "a") as f:
-        f.write(f"Batch Size: {batchsize} \nEpochs: {epochs} \nLearning Rate: {learningrate} \nNeurons: {neurons}")
+        f.write(f"Number of Features: {optimalfeatures}\nBatch Size: {batchsize} \nEpochs: {epochs} \nLearning Rate: {learningrate} \nNeurons: {neurons}")
     torch.save(model.state_dict(), f"../models/neuralnetworks/nn_logreg_{optimalfeatures}features")
