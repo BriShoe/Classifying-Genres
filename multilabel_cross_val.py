@@ -144,6 +144,8 @@ def crossvalidation(X, Y, batchsizes, epochs, learningrates, neurons):
     for variableset in [(batchsize, epoch, learningrate, neuron) for batchsize in batchsizes
                         for epoch in epochs for learningrate in learningrates for neuron in neurons]:
         # separate target values and get random splits
+        print(f"Running Cross Validation on Batchsize = {variableset[0]}, Epochs = {variableset[1]}, "
+              f"Learning Rate = {variableset[2]}, Neurons = {variableset[3]}")
         num_genres = 24
 
         dataset = make_dataset(X.values, Y.values)
@@ -219,7 +221,7 @@ def crossvalidation(X, Y, batchsizes, epochs, learningrates, neurons):
         performance[variableset] = classreport["micro avg"]["f1-score"]
     performances = sorted(performance.items(), key=lambda x: x[1], reverse=True)
     print(performances)
-    return performances[0][0]
+    return {"hyperparameters": performances[0][0], "f1-score": performances[1][1]}
 
 if __name__ == "__main__":
     data_p1 = pd.read_csv('data/rock1edited_filtered.csv', index_col=0)
@@ -231,7 +233,7 @@ if __name__ == "__main__":
     X = full_train.iloc[:, :len(full_train.columns) - num_genres]
     Y = full_train.iloc[:, len(full_train.columns) - num_genres:]
 
-    print("Best Hyperparamters: ", crossvalidation(X, Y, [16, 32], [10], [0.001], [256]))
+    print("Best Hyperparamters: ", crossvalidation(X, Y, [16, 32], [1], [0.001], [256]))
 
     # save model
     #torch.save(model.state_dict(), f"models/neuralnetworks/nn_baseline")
