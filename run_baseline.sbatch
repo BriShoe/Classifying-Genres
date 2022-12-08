@@ -11,7 +11,8 @@ conda activate genre-classification
 
 echo "Activated Environment"
 
-python train/train_multilabel_nn.py
+cd train || exit
+python -u train_multilabel_nn.py
 
 echo "Finished Job"
 

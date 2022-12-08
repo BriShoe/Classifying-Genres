@@ -1,0 +1,14 @@
+Activated Environment
+Traceback (most recent call last):
+  File "/scratch/users/jwang003/GenreClassification/train/train_multilabel_nn_logreg.py", line 19, in <module>
+    reducedcolumns = np.loadtxt("../reduce/logregtop100.txt", dtype=str)
+  File "/home/groups/rondror/software/jwang003/miniconda3/envs/genre-classification/lib/python3.10/site-packages/numpy/lib/npyio.py", line 1318, in loadtxt
+    arr = _read(fname, dtype=dtype, comment=comment, delimiter=delimiter,
+  File "/home/groups/rondror/software/jwang003/miniconda3/envs/genre-classification/lib/python3.10/site-packages/numpy/lib/npyio.py", line 955, in _read
+    fh = np.lib._datasource.open(fname, 'rt', encoding=encoding)
+  File "/home/groups/rondror/software/jwang003/miniconda3/envs/genre-classification/lib/python3.10/site-packages/numpy/lib/_datasource.py", line 193, in open
+    return ds.open(path, mode, encoding=encoding, newline=newline)
+  File "/home/groups/rondror/software/jwang003/miniconda3/envs/genre-classification/lib/python3.10/site-packages/numpy/lib/_datasource.py", line 530, in open
+    return _file_openers[ext](found, mode=mode,
+FileNotFoundError: [Errno 2] No such file or directory: '../reduce/logregtop100.txt'
+Finished Job

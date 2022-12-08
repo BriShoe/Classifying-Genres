@@ -15,17 +15,17 @@
          rock---newwave       0.00      0.00      0.00        83
          rock---poprock       0.00      0.00      0.00        31
         rock---postpunk       0.00      0.00      0.00        54
- rock---progressiverock       1.00      0.01      0.01       143
+ rock---progressiverock       0.00      0.00      0.00       143
  rock---psychedelicrock       0.00      0.00      0.00        71
-            rock---punk       0.54      0.04      0.07       200
-      rock---rockabilly       1.00      0.02      0.04        51
+            rock---punk       0.55      0.03      0.06       200
+      rock---rockabilly       0.00      0.00      0.00        51
        rock---rocknroll       0.00      0.00      0.00        54
 rock---singersongwriter       0.00      0.00      0.00       158
         rock---softrock       0.00      0.00      0.00        27
        rock---spacerock       0.00      0.00      0.00        32
       rock---stonerrock       0.00      0.00      0.00        23
 
-              micro avg       0.60      0.00      0.01      2786
-              macro avg       0.11      0.00      0.00      2786
-           weighted avg       0.11      0.00      0.01      2786
+              micro avg       0.43      0.00      0.00      2786
+              macro avg       0.02      0.00      0.00      2786
+           weighted avg       0.04      0.00      0.00      2786
             samples avg       0.00      0.00      0.00      2786

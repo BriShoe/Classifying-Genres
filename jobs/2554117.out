@@ -1,0 +1,6 @@
+Activated Environment
+  File "test.py", line 47
+    PATH = f"models/neuralnetworks/nn_{modelname}"
+                                                 ^
+SyntaxError: invalid syntax
+Finished Job

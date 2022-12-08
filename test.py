@@ -8,6 +8,7 @@ from sklearn.metrics import classification_report
 from sklearn.metrics import multilabel_confusion_matrix
 from sklearn.manifold import LocallyLinearEmbedding, Isomap
 from sklearn.decomposition import PCA
+from ast import literal_eval
 import matplotlib.pyplot as plt
 
 listOfGenres = sorted([
@@ -41,14 +42,14 @@ def fitLLE(X, k):
 
 
 if __name__ == "__main__":
-    modelnames = ["logreg", "baseline", "lle", "isomap", "pca"]
+    modelnames = ["logreg", "baseline", "isomap", "pca"]
     for modelname in modelnames:
         PATH = f"models/neuralnetworks/nn_{modelname}"
         num_genres = 24
         with open(f"{PATH}.txt") as f:
             lines = f.readlines()
         num_features = int(lines[0][19:])
-        neurons = int(lines[4][9:])
+        neurons = literal_eval(lines[4].split(':')[1])
         model = multi_classifier(num_features, neurons, num_genres)
         model.load_state_dict(torch.load(f"{PATH}"))
 
