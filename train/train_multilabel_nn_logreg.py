@@ -34,7 +34,7 @@ if __name__ == '__main__':
         crossoutput["numfeatures"] = num
         print(crossoutput)
         hyperparameters = np.append(hyperparameters, crossoutput)
-    hyperparameters = sorted(hyperparameters, key=lambda x: x["f1-score"])
+    hyperparameters = sorted(hyperparameters, key=lambda x: x["f1-score"], reverse=True)
     print(hyperparameters)
     optimalfeatures = hyperparameters[0]["numfeatures"]
     print(optimalfeatures)
