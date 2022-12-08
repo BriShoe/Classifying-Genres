@@ -4,12 +4,12 @@
  rock---alternativerock       0.00      0.00      0.00       189
        rock---bluesrock       0.00      0.00      0.00        60
          rock---britpop       0.00      0.00      0.00        36
-     rock---classicrock       0.41      0.03      0.05       421
+     rock---classicrock       0.62      0.01      0.02       421
       rock---garagerock       0.00      0.00      0.00        25
         rock---glamrock       0.00      0.00      0.00        37
           rock---grunge       0.00      0.00      0.00        30
         rock---hardrock       0.00      0.00      0.00       210
-           rock---indie       0.50      0.00      0.01       349
+           rock---indie       0.00      0.00      0.00       349
         rock---indiepop       0.00      0.00      0.00        59
        rock---indierock       0.00      0.00      0.00       116
          rock---newwave       0.00      0.00      0.00        83
@@ -17,15 +17,15 @@
         rock---postpunk       0.00      0.00      0.00        54
  rock---progressiverock       0.00      0.00      0.00       143
  rock---psychedelicrock       0.00      0.00      0.00        71
-            rock---punk       0.65      0.07      0.12       200
-      rock---rockabilly       0.67      0.12      0.20        51
-       rock---rocknroll       0.50      0.07      0.13        54
-rock---singersongwriter       0.00      0.00      0.00       158
+            rock---punk       0.00      0.00      0.00       200
+      rock---rockabilly       0.00      0.00      0.00        51
+       rock---rocknroll       0.00      0.00      0.00        54
+rock---singersongwriter       1.00      0.01      0.01       158
         rock---softrock       0.00      0.00      0.00        27
        rock---spacerock       0.00      0.00      0.00        32
       rock---stonerrock       0.00      0.00      0.00        23
 
-              micro avg       0.53      0.01      0.02      2786
-              macro avg       0.11      0.01      0.02      2786
-           weighted avg       0.19      0.01      0.02      2786
-            samples avg       0.02      0.02      0.02      2786
+              micro avg       0.60      0.00      0.00      2786
+              macro avg       0.07      0.00      0.00      2786
+           weighted avg       0.15      0.00      0.00      2786
+            samples avg       0.00      0.00      0.00      2786

@@ -43,7 +43,7 @@ def fitLLE(X, k):
 
 
 if __name__ == "__main__":
-    modelnames = ["logreg", "baseline", "isomap", "pca"]
+    modelnames = ["logreg", "baseline", "lle", "isomap", "pca"]
     for modelname in modelnames:
         PATH = f"models/neuralnetworks/nn_{modelname}"
         num_genres = 24
