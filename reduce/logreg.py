@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 from sklearn.metrics import confusion_matrix
 import matplotlib.pyplot as plt
-from archive.test_multilabel_nn import print_confusion_matrix, classification_report
+from multilabel_cross_val import print_confusion_matrix, classification_report
 
 
 if __name__ == "__main__":
@@ -40,11 +40,11 @@ if __name__ == "__main__":
     totalYpred = np.reshape(totalYpred, (1862, 24)).astype(int)
     print(Y_test.shape, totalYpred.shape)
 
-    with open("../results/classification_reports/logregclassification_report.txt", "a") as f:
+    with open("../reduce/logregonly_classification_report.txt", "a") as f:
         f.write(classification_report(Y_test, totalYpred, target_names=genres))
 
     fig.tight_layout()
-    plt.savefig('../visualizations/logreg_cfmatrix.png')
+    plt.savefig('../visualizations/logregonly_cfmatrix.png')
     plt.show()
 
 
@@ -66,13 +66,13 @@ if __name__ == "__main__":
 
     print(weightdict)
 
-    rankedfeatures = sorted(weightdict.items(), key=lambda x: x[1], reverse=True)
-    topfeatures = np.array(rankedfeatures[:selectnum])[:, 0]
+    #rankedfeatures = sorted(weightdict.items(), key=lambda x: x[1], reverse=True)
+    #topfeatures = np.array(rankedfeatures[:selectnum])[:, 0]
 
-    with open('logregtop100.txt', "a") as f:
-        for feature in topfeatures:
-            f.write(feature)
-            f.write("\n")
+    #with open('logregtop100.txt', "a") as f:
+    #   for feature in topfeatures:
+    #        f.write(feature)
+    #        f.write("\n")
 
 
 

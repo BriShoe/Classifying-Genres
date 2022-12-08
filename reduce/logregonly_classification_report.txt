@@ -1,0 +1,31 @@
+                         precision    recall  f1-score   support
+
+     rock---alternative       0.15      0.06      0.08       327
+ rock---alternativerock       0.11      0.06      0.08       189
+       rock---bluesrock       0.04      0.08      0.05        60
+         rock---britpop       0.01      0.03      0.01        36
+     rock---classicrock       0.21      0.05      0.08       421
+      rock---garagerock       0.03      0.12      0.05        25
+        rock---glamrock       0.02      0.05      0.02        37
+          rock---grunge       0.02      0.07      0.03        30
+        rock---hardrock       0.09      0.05      0.06       210
+           rock---indie       0.20      0.06      0.09       349
+        rock---indiepop       0.03      0.05      0.03        59
+       rock---indierock       0.08      0.07      0.07       116
+         rock---newwave       0.04      0.07      0.05        83
+         rock---poprock       0.00      0.00      0.00        31
+        rock---postpunk       0.02      0.04      0.03        54
+ rock---progressiverock       0.07      0.05      0.06       143
+ rock---psychedelicrock       0.06      0.10      0.07        71
+            rock---punk       0.12      0.07      0.09       200
+      rock---rockabilly       0.02      0.04      0.02        51
+       rock---rocknroll       0.02      0.04      0.02        54
+rock---singersongwriter       0.09      0.06      0.08       158
+        rock---softrock       0.01      0.04      0.01        27
+       rock---spacerock       0.04      0.12      0.06        32
+      rock---stonerrock       0.02      0.09      0.03        23
+
+              micro avg       0.06      0.06      0.06      2786
+              macro avg       0.06      0.06      0.05      2786
+           weighted avg       0.12      0.06      0.07      2786
+            samples avg       0.04      0.06      0.04      2786
