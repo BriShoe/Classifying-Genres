@@ -1,5 +1,5 @@
 import numpy as np
-from multilabel_cross_val import multi_classifier, make_dataset, prediction_accuracy, print_confusion_matrix
+from train.multilabel_cross_val import multi_classifier, make_dataset, prediction_accuracy, print_confusion_matrix
 import torch
 from torch.utils.data import DataLoader
 from torch import nn
