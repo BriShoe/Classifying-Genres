@@ -146,7 +146,7 @@ def fitPCA(X, k):
 
 # evaluate using 10-fold cross-validation
 if __name__ == '__main__':
-    numcolumns = [100]
+    numcolumns = [25, 50, 100]
     # combine data
     data_p1 = pd.read_csv('../data/rock1edited_filtered.csv', index_col=0)
     data_p2 = pd.read_csv('../data/rock2edited_filtered.csv', index_col=0)
@@ -160,7 +160,7 @@ if __name__ == '__main__':
         X = full_train.iloc[:, :len(full_train.columns) - num_genres]
         pca = fitPCA(X, num)
         X = pd.DataFrame(pca.transform(X))
-        crossoutput = crossvalidation(X, Y, [16, 32], [10], [0.001], [32, 64])
+        crossoutput = crossvalidation(X, Y, [16, 32], [100], [0.001], [32, 64])
         crossoutput["numfeatures"] = num
         print(crossoutput)
         hyperparameters = np.append(hyperparameters, crossoutput)
@@ -202,5 +202,6 @@ if __name__ == '__main__':
             costval.append(cost)
 
     with open(f"../models/neuralnetworks/nn_pca.txt", "a") as f:
+        f.truncate(0)
         f.write(f"Number of Features: {optimalfeatures} \nBatch Size: {batchsize} \nEpochs: {epochs} \nLearning Rate: {learningrate} \nNeurons: {neurons}")
     torch.save(model.state_dict(), f"../models/neuralnetworks/nn_pca")
