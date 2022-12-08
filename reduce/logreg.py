@@ -3,11 +3,11 @@ import pandas as pd
 import numpy as np
 from sklearn.metrics import confusion_matrix
 import matplotlib.pyplot as plt
-from multilabel_cross_val import print_confusion_matrix, classification_report
+from train.multilabel_cross_val import print_confusion_matrix, classification_report
 
 
 if __name__ == "__main__":
-    selectnum = 100
+    selectnum = 400
     data_p1 = pd.read_csv('../data/rock1edited_filtered.csv', index_col=0)
     data_p2 = pd.read_csv('../data/rock2edited_filtered.csv', index_col=0)
     full_train = data_p1.append(data_p2)
@@ -40,12 +40,12 @@ if __name__ == "__main__":
     totalYpred = np.reshape(totalYpred, (1862, 24)).astype(int)
     print(Y_test.shape, totalYpred.shape)
 
-    with open("../reduce/logregonly_classification_report.txt", "a") as f:
-        f.write(classification_report(Y_test, totalYpred, target_names=genres))
+    #with open("../reduce/logregonly_classification_report.txt", "a") as f:
+    #    f.write(classification_report(Y_test, totalYpred, target_names=genres))
 
-    fig.tight_layout()
-    plt.savefig('../visualizations/logregonly_cfmatrix.png')
-    plt.show()
+    #fig.tight_layout()
+    #plt.savefig('../visualizations/logregonly_cfmatrix.png')
+    #plt.show()
 
 
     weights = np.zeros((num_genres, num_features))
@@ -66,13 +66,13 @@ if __name__ == "__main__":
 
     print(weightdict)
 
-    #rankedfeatures = sorted(weightdict.items(), key=lambda x: x[1], reverse=True)
-    #topfeatures = np.array(rankedfeatures[:selectnum])[:, 0]
+    rankedfeatures = sorted(weightdict.items(), key=lambda x: x[1], reverse=True)
+    topfeatures = np.array(rankedfeatures[:selectnum])[:, 0]
 
-    #with open('logregtop100.txt', "a") as f:
-    #   for feature in topfeatures:
-    #        f.write(feature)
-    #        f.write("\n")
+    with open('logregtop400.txt', "a") as f:
+       for feature in topfeatures:
+            f.write(feature)
+            f.write("\n")
 
 
 

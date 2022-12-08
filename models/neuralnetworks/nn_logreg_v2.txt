@@ -1,5 +1,5 @@
-Number of Features: 100 
+Number of Features: 400
 Batch Size: 32 
 Epochs: 100 
 Learning Rate: 0.001 
-Neurons: (96, 48)
+Neurons: (200, 100)

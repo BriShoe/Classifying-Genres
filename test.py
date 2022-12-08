@@ -43,7 +43,7 @@ def fitLLE(X, k):
 
 
 if __name__ == "__main__":
-    modelnames = ["logreg", "baseline", "lle", "isomap", "pca"]
+    modelnames = ["logreg_v2"]
     for modelname in modelnames:
         PATH = f"models/neuralnetworks/nn_{modelname}"
         num_genres = 24
@@ -64,6 +64,9 @@ if __name__ == "__main__":
 
         if modelname == "logreg":
             logregcolumns = np.loadtxt("reduce/logregtop100.txt", dtype=str)
+            X_test = X_test[logregcolumns[:num_features]]
+        elif modelname == "logreg_v2":
+            logregcolumns = np.loadtxt("reduce/logregtop400.txt", dtype=str)
             X_test = X_test[logregcolumns[:num_features]]
         elif modelname == "pca":
             pca = fitPCA(X, num_features)

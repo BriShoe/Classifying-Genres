@@ -236,7 +236,7 @@ def crossvalidation(X, Y, batchsizes, epochs, learningrates, neurons):
     print(performances)
     return {
         "hyperparameters": performances[0][0],
-        "f1-score": performances[1][1]
+        "f1-score": performances[0][1]
     }
 
 
