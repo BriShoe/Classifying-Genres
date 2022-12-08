@@ -4,7 +4,7 @@
  rock---alternativerock       0.00      0.00      0.00       189
        rock---bluesrock       0.00      0.00      0.00        60
          rock---britpop       0.00      0.00      0.00        36
-     rock---classicrock       0.60      0.08      0.14       421
+     rock---classicrock       0.58      0.07      0.13       421
       rock---garagerock       0.00      0.00      0.00        25
         rock---glamrock       0.00      0.00      0.00        37
           rock---grunge       0.00      0.00      0.00        30
@@ -18,14 +18,14 @@
  rock---progressiverock       0.00      0.00      0.00       143
  rock---psychedelicrock       0.50      0.01      0.03        71
             rock---punk       0.79      0.13      0.22       200
-      rock---rockabilly       0.54      0.14      0.22        51
-       rock---rocknroll       0.33      0.07      0.12        54
+      rock---rockabilly       0.50      0.14      0.22        51
+       rock---rocknroll       0.31      0.07      0.12        54
 rock---singersongwriter       1.00      0.01      0.02       158
         rock---softrock       0.00      0.00      0.00        27
        rock---spacerock       1.00      0.03      0.06        32
       rock---stonerrock       0.00      0.00      0.00        23
 
-              micro avg       0.61      0.03      0.06      2786
-              macro avg       0.22      0.02      0.04      2786
-           weighted avg       0.31      0.03      0.05      2786
-            samples avg       0.04      0.03      0.04      2786
+              micro avg       0.60      0.03      0.05      2786
+              macro avg       0.22      0.02      0.03      2786
+           weighted avg       0.30      0.03      0.05      2786
+            samples avg       0.04      0.03      0.03      2786

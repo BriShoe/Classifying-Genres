@@ -10,6 +10,7 @@ from sklearn.manifold import LocallyLinearEmbedding, Isomap
 from sklearn.decomposition import PCA
 from ast import literal_eval
 import matplotlib.pyplot as plt
+from ast import literal_eval
 
 listOfGenres = sorted([
     'rock---alternative', 'rock---alternativerock', 'rock---bluesrock',

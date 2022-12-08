@@ -78,7 +78,7 @@ if __name__ == '__main__':
             print(np.asarray(running_accuracy).mean())
             costval.append(cost)
 
-    with open(f"../models/neuralnetworks/nn_lle", "a") as f:
+    with open(f"../models/neuralnetworks/nn_lle.txt", "a") as f:
         f.truncate(0)
         f.write(f"Number of Features: {optimalfeatures} \nBatch Size: {batchsize} \nEpochs: {epochs} \nLearning Rate: {learningrate} \nNeurons: {neurons}")
     torch.save(model.state_dict(), f"../models/neuralnetworks/nn_lle")

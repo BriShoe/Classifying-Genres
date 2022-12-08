@@ -9,6 +9,13 @@
           </advancedOptions>
         </fileTransfer>
       </webServer>
+      <webServer id="848fb834-9744-4293-a731-45c91b73f59d" name="sherlock">
+        <fileTransfer rootFolder="/scratch/users/jwang003" accessType="SFTP" host="login.sherlock.stanford.edu" port="22" sshConfigId="423e52c3-c49a-4f4e-87fe-3ece357c8193" sshConfig="jwang003@login.sherlock.stanford.edu:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>
