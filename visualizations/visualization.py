@@ -137,88 +137,34 @@ def valueHistogram():
         'rock---progressiverock': 744,
         'rock---rockabilly': 214,
         'rock---rocknroll': 284,
-        'rock---hardcorepunk': 68,
         'rock---punk': 1006,
         'rock---newwave': 460,
         'rock---postpunk': 322,
         'rock---alternativerock': 956,
         'rock---indie': 1540,
         'rock---hardrock': 858,
-        'rock---hairmetal': 54,
-        'rock---artrock': 72,
         'rock---bluesrock': 212,
-        'rock---alternativepunk': 30,
-        'rock---latinrock': 18,
-        'rock---powerpop': 70,
         'rock---indiepop': 204,
-        'rock---psychobilly': 86,
         'rock---stonerrock': 110,
         'rock---glamrock': 150,
-        'rock---aor': 26,
         'rock---psychedelicrock': 314,
         'rock---britpop': 176,
-        'rock---newromantic': 42,
         'rock---emo': 102,
         'rock---softrock': 148,
         'rock---grunge': 200,
-        'rock---pianorock': 18,
-        'rock---american': 98,
-        'rock---rockabillysoul': 12,
-        'rock---krautrock': 44,
-        'rock---noisepop': 22,
-        'rock---stoner': 20,
-        'rock---garagerock': 90,
-        'rock---lofi': 64,
-        'rock---spacerock': 108,
-        'rock---indiefolk': 24,
-        'rock---alternativemetal': 34,
-        'rock---guitarvirtuoso': 48,
-        'rock---powerballad': 10,
-        'rock---symphonicrock': 32,
-        'rock---rockballad': 20,
-        'rock---arenarock': 4,
-        'rock---protopunk': 14,
-        'rock---numetal': 44,
-        'rock---rapcore': 26,
-        'rock---funkrock': 16,
-        'rock---folkpunk': 18,
-        'rock---surfrock': 26,
-        'rock---anarchopunk': 16,
-        'rock---stonermetal': 14,
-        'rock---southernrock': 92,
-        'rock---poppunk': 88,
-        'rock---jamband': 28,
-        'rock---funkmetal': 12,
-        'rock---madchester': 18,
-        'rock---britishinvasion': 6,
-        'rock---chamberpop': 6,
-        'rock---russianrock': 58,
-        'rock---experimentalrock': 28,
-        'rock---melodicrock': 34,
-        'rock---postgrunge': 12,
-        'rock---horrorpunk': 14,
-        'rock---streetpunk': 18,
-        'rock---jazzrock': 26,
-        'rock---symphonicprog': 10,
-        'rock---glam': 14,
-        'rock---acousticrock': 8,
-        'rock---psychedelicpop': 4
+        'rock---spacerock': 108
     })
     #sortedGenres = np.array(sorted(genres.items(), key=lambda x: x[1], reverse=True))
     #genres = sortedGenres[:10]
     #topgenres, values = list(genres[:, 0]), list(genres[:, 1])
     #topgenres = [str[7:] for str in topgenres]
     #values = [int(num) for num in values]
-    count = 0
-    for key, value in genres.items():
-        if value > 100:
-            count += 1
-    print(count)
     genrevalues = genres.values()
     genrevalues = [int(value) for value in genrevalues]
-    hist = np.histogram(genrevalues, range=(0, 2000))
-    plt.hist(genrevalues, bins="auto", color="g")
-    #plt.ylim(0, 2000)
+    counts, bins = np.histogram(genrevalues, bins=[0, 100, 250, 500, 750, 1000, 1250, 1500, 1750, 2000])
+    plt.hist(bins[:-1], bins, weights=counts, color="#b71657")
+    plt.xlim(0, 2000)
+    plt.xticks(list(plt.xticks()[0]) + [100])
     plt.xlabel("Number of Examples")
     plt.ylabel("Number of Subgenres")
     #plt.xticks(rotation=45, ha="right")
@@ -263,4 +209,4 @@ def labelCorrelation():
 
 
 if __name__ == "__main__":
-    labelCorrelation()
+    valueHistogram()

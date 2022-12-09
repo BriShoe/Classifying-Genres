@@ -43,7 +43,7 @@ def fitLLE(X, k):
 
 
 if __name__ == "__main__":
-    modelnames = ["logreg_v2"]
+    modelnames = ["logreg_v2", "pca_v2", "lle_v2", "isomap_v2", "baseline"]
     for modelname in modelnames:
         PATH = f"models/neuralnetworks/nn_{modelname}"
         num_genres = 24
@@ -68,13 +68,13 @@ if __name__ == "__main__":
         elif modelname == "logreg_v2":
             logregcolumns = np.loadtxt("reduce/logregtop400.txt", dtype=str)
             X_test = X_test[logregcolumns[:num_features]]
-        elif modelname == "pca":
+        elif modelname == "pca_v2":
             pca = fitPCA(X, num_features)
             X_test = pd.DataFrame(pca.transform(X_test))
-        elif modelname == "isomap":
+        elif modelname == "isomap_v2":
             isomap = fitIsomap(X, num_features)
             X_test = pd.DataFrame(isomap.transform(X_test))
-        elif modelname == "lle":
+        elif modelname == "lle_v2":
             lle = fitLLE(X, num_features)
             X_test = pd.DataFrame(lle.transform(X_test))
 
@@ -116,7 +116,7 @@ if __name__ == "__main__":
         # Confusion Matrix
         with open(f"results/classification_reports/{modelname}_classification_report.txt", "a") as f:
             f.truncate(0)
-            f.write(classification_report(y_truths, y_predicts, target_names=listOfGenres))
+            f.write(classification_report(y_truths, y_predicts, digits=3, target_names=listOfGenres))
         cf_matrix = multilabel_confusion_matrix(y_truths, y_predicts)
         fig, ax = plt.subplots(4, 6, figsize=(12, 7))
 
