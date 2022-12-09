@@ -1,0 +1,386 @@
+Activated Environment
+/scratch/users/jwang003/GenreClassification/train/train_multilabel_nn_logreg.py:24: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  full_train = data_p1.append(data_p2)
+Running Cross Validation on Batchsize = 32, Epochs = 100, Learning Rate = 0.001, Neurons = (200, 100)
+Fold 1
+/home/groups/rondror/software/jwang003/miniconda3/envs/genre-classification/lib/python3.10/site-packages/torch/nn/functional.py:1967: UserWarning: nn.functional.sigmoid is deprecated. Use torch.sigmoid instead.
+  warnings.warn("nn.functional.sigmoid is deprecated. Use torch.sigmoid instead.")
+Epoch: 10/100 AVG Training Loss: 0.168 AVG Test Loss: 0.169 AVG Training Acc 0.941023 AVG Test Acc 0.942382 %
+Epoch: 20/100 AVG Training Loss: 0.154 AVG Test Loss: 0.168 AVG Training Acc 0.944178 AVG Test Acc 0.943247 %
+Epoch: 30/100 AVG Training Loss: 0.143 AVG Test Loss: 0.169 AVG Training Acc 0.946844 AVG Test Acc 0.942823 %
+Epoch: 40/100 AVG Training Loss: 0.134 AVG Test Loss: 0.174 AVG Training Acc 0.948274 AVG Test Acc 0.940961 %
+Epoch: 50/100 AVG Training Loss: 0.127 AVG Test Loss: 0.177 AVG Training Acc 0.950717 AVG Test Acc 0.942339 %
+Epoch: 60/100 AVG Training Loss: 0.123 AVG Test Loss: 0.180 AVG Training Acc 0.951887 AVG Test Acc 0.941057 %
+Epoch: 70/100 AVG Training Loss: 0.118 AVG Test Loss: 0.188 AVG Training Acc 0.953414 AVG Test Acc 0.940941 %
+Epoch: 80/100 AVG Training Loss: 0.114 AVG Test Loss: 0.192 AVG Training Acc 0.954611 AVG Test Acc 0.939181 %
+Epoch: 90/100 AVG Training Loss: 0.111 AVG Test Loss: 0.195 AVG Training Acc 0.955855 AVG Test Acc 0.939793 %
+Epoch: 100/100 AVG Training Loss: 0.109 AVG Test Loss: 0.199 AVG Training Acc 0.956587 AVG Test Acc 0.939959 %
+Fold 2
+Epoch: 10/100 AVG Training Loss: 0.170 AVG Test Loss: 0.167 AVG Training Acc 0.940879 AVG Test Acc 0.941950 %
+Epoch: 20/100 AVG Training Loss: 0.154 AVG Test Loss: 0.166 AVG Training Acc 0.943607 AVG Test Acc 0.941925 %
+Epoch: 30/100 AVG Training Loss: 0.143 AVG Test Loss: 0.168 AVG Training Acc 0.946614 AVG Test Acc 0.940671 %
+Epoch: 40/100 AVG Training Loss: 0.135 AVG Test Loss: 0.171 AVG Training Acc 0.948872 AVG Test Acc 0.940836 %
+Epoch: 50/100 AVG Training Loss: 0.127 AVG Test Loss: 0.178 AVG Training Acc 0.950898 AVG Test Acc 0.940176 %
+Epoch: 60/100 AVG Training Loss: 0.121 AVG Test Loss: 0.181 AVG Training Acc 0.952706 AVG Test Acc 0.940126 %
+Epoch: 70/100 AVG Training Loss: 0.118 AVG Test Loss: 0.182 AVG Training Acc 0.953756 AVG Test Acc 0.940714 %
+Epoch: 80/100 AVG Training Loss: 0.114 AVG Test Loss: 0.189 AVG Training Acc 0.954837 AVG Test Acc 0.939900 %
+Epoch: 90/100 AVG Training Loss: 0.111 AVG Test Loss: 0.191 AVG Training Acc 0.955837 AVG Test Acc 0.939085 %
+Epoch: 100/100 AVG Training Loss: 0.109 AVG Test Loss: 0.190 AVG Training Acc 0.957355 AVG Test Acc 0.939773 %
+Fold 3
+Epoch: 10/100 AVG Training Loss: 0.169 AVG Test Loss: 0.167 AVG Training Acc 0.940862 AVG Test Acc 0.941937 %
+Epoch: 20/100 AVG Training Loss: 0.154 AVG Test Loss: 0.166 AVG Training Acc 0.943828 AVG Test Acc 0.941723 %
+Epoch: 30/100 AVG Training Loss: 0.143 AVG Test Loss: 0.167 AVG Training Acc 0.946488 AVG Test Acc 0.942970 %
+Epoch: 40/100 AVG Training Loss: 0.134 AVG Test Loss: 0.170 AVG Training Acc 0.948661 AVG Test Acc 0.940531 %
+Epoch: 50/100 AVG Training Loss: 0.126 AVG Test Loss: 0.175 AVG Training Acc 0.950655 AVG Test Acc 0.940504 %
+Epoch: 60/100 AVG Training Loss: 0.121 AVG Test Loss: 0.178 AVG Training Acc 0.952322 AVG Test Acc 0.938933 %
+Epoch: 70/100 AVG Training Loss: 0.116 AVG Test Loss: 0.181 AVG Training Acc 0.953983 AVG Test Acc 0.940008 %
+Epoch: 80/100 AVG Training Loss: 0.114 AVG Test Loss: 0.186 AVG Training Acc 0.955165 AVG Test Acc 0.938079 %
+Epoch: 90/100 AVG Training Loss: 0.111 AVG Test Loss: 0.188 AVG Training Acc 0.956038 AVG Test Acc 0.939133 %
+Epoch: 100/100 AVG Training Loss: 0.109 AVG Test Loss: 0.193 AVG Training Acc 0.956955 AVG Test Acc 0.938203 %
+Fold 4
+Epoch: 10/100 AVG Training Loss: 0.169 AVG Test Loss: 0.167 AVG Training Acc 0.941433 AVG Test Acc 0.941833 %
+Epoch: 20/100 AVG Training Loss: 0.154 AVG Test Loss: 0.166 AVG Training Acc 0.943891 AVG Test Acc 0.941358 %
+Epoch: 30/100 AVG Training Loss: 0.142 AVG Test Loss: 0.168 AVG Training Acc 0.947315 AVG Test Acc 0.941826 %
+Epoch: 40/100 AVG Training Loss: 0.134 AVG Test Loss: 0.172 AVG Training Acc 0.949092 AVG Test Acc 0.942047 %
+Epoch: 50/100 AVG Training Loss: 0.128 AVG Test Loss: 0.176 AVG Training Acc 0.950371 AVG Test Acc 0.942143 %
+Epoch: 60/100 AVG Training Loss: 0.121 AVG Test Loss: 0.181 AVG Training Acc 0.952203 AVG Test Acc 0.941420 %
+Epoch: 70/100 AVG Training Loss: 0.117 AVG Test Loss: 0.187 AVG Training Acc 0.953950 AVG Test Acc 0.940917 %
+Epoch: 80/100 AVG Training Loss: 0.113 AVG Test Loss: 0.194 AVG Training Acc 0.955040 AVG Test Acc 0.940786 %
+Epoch: 90/100 AVG Training Loss: 0.109 AVG Test Loss: 0.194 AVG Training Acc 0.956310 AVG Test Acc 0.939346 %
+Epoch: 100/100 AVG Training Loss: 0.108 AVG Test Loss: 0.197 AVG Training Acc 0.957118 AVG Test Acc 0.940214 %
+Fold 5
+Epoch: 10/100 AVG Training Loss: 0.170 AVG Test Loss: 0.168 AVG Training Acc 0.940701 AVG Test Acc 0.941110 %
+Epoch: 20/100 AVG Training Loss: 0.154 AVG Test Loss: 0.167 AVG Training Acc 0.944079 AVG Test Acc 0.940621 %
+Epoch: 30/100 AVG Training Loss: 0.142 AVG Test Loss: 0.166 AVG Training Acc 0.946599 AVG Test Acc 0.942040 %
+Epoch: 40/100 AVG Training Loss: 0.134 AVG Test Loss: 0.172 AVG Training Acc 0.949059 AVG Test Acc 0.940655 %
+Epoch: 50/100 AVG Training Loss: 0.127 AVG Test Loss: 0.177 AVG Training Acc 0.950847 AVG Test Acc 0.940724 %
+Epoch: 60/100 AVG Training Loss: 0.121 AVG Test Loss: 0.180 AVG Training Acc 0.952655 AVG Test Acc 0.940414 %
+Epoch: 70/100 AVG Training Loss: 0.119 AVG Test Loss: 0.181 AVG Training Acc 0.953614 AVG Test Acc 0.939567 %
+Epoch: 80/100 AVG Training Loss: 0.114 AVG Test Loss: 0.184 AVG Training Acc 0.954816 AVG Test Acc 0.939739 %
+Epoch: 90/100 AVG Training Loss: 0.112 AVG Test Loss: 0.188 AVG Training Acc 0.955490 AVG Test Acc 0.938520 %
+Epoch: 100/100 AVG Training Loss: 0.108 AVG Test Loss: 0.192 AVG Training Acc 0.957266 AVG Test Acc 0.939567 %
+Fold 6
+Epoch: 10/100 AVG Training Loss: 0.169 AVG Test Loss: 0.168 AVG Training Acc 0.941047 AVG Test Acc 0.942323 %
+Epoch: 20/100 AVG Training Loss: 0.154 AVG Test Loss: 0.167 AVG Training Acc 0.944207 AVG Test Acc 0.943342 %
+Epoch: 30/100 AVG Training Loss: 0.143 AVG Test Loss: 0.169 AVG Training Acc 0.946293 AVG Test Acc 0.942936 %
+Epoch: 40/100 AVG Training Loss: 0.133 AVG Test Loss: 0.172 AVG Training Acc 0.948388 AVG Test Acc 0.941668 %
+Epoch: 50/100 AVG Training Loss: 0.127 AVG Test Loss: 0.177 AVG Training Acc 0.950811 AVG Test Acc 0.941282 %
+Epoch: 60/100 AVG Training Loss: 0.121 AVG Test Loss: 0.182 AVG Training Acc 0.952479 AVG Test Acc 0.941117 %
+Epoch: 70/100 AVG Training Loss: 0.118 AVG Test Loss: 0.185 AVG Training Acc 0.953567 AVG Test Acc 0.941585 %
+Epoch: 80/100 AVG Training Loss: 0.115 AVG Test Loss: 0.188 AVG Training Acc 0.954475 AVG Test Acc 0.940270 %
+Epoch: 90/100 AVG Training Loss: 0.113 AVG Test Loss: 0.189 AVG Training Acc 0.955530 AVG Test Acc 0.939966 %
+Epoch: 100/100 AVG Training Loss: 0.107 AVG Test Loss: 0.198 AVG Training Acc 0.957428 AVG Test Acc 0.938416 %
+Fold 7
+Epoch: 10/100 AVG Training Loss: 0.168 AVG Test Loss: 0.173 AVG Training Acc 0.941727 AVG Test Acc 0.940573 %
+Epoch: 20/100 AVG Training Loss: 0.155 AVG Test Loss: 0.172 AVG Training Acc 0.943472 AVG Test Acc 0.940676 %
+Epoch: 30/100 AVG Training Loss: 0.143 AVG Test Loss: 0.175 AVG Training Acc 0.946477 AVG Test Acc 0.939298 %
+Epoch: 40/100 AVG Training Loss: 0.133 AVG Test Loss: 0.177 AVG Training Acc 0.949026 AVG Test Acc 0.939615 %
+Epoch: 50/100 AVG Training Loss: 0.127 AVG Test Loss: 0.179 AVG Training Acc 0.950861 AVG Test Acc 0.939298 %
+Epoch: 60/100 AVG Training Loss: 0.121 AVG Test Loss: 0.184 AVG Training Acc 0.952849 AVG Test Acc 0.938892 %
+Epoch: 70/100 AVG Training Loss: 0.117 AVG Test Loss: 0.188 AVG Training Acc 0.953605 AVG Test Acc 0.938437 %
+Epoch: 80/100 AVG Training Loss: 0.114 AVG Test Loss: 0.191 AVG Training Acc 0.955108 AVG Test Acc 0.938037 %
+Epoch: 90/100 AVG Training Loss: 0.112 AVG Test Loss: 0.198 AVG Training Acc 0.955457 AVG Test Acc 0.936997 %
+Epoch: 100/100 AVG Training Loss: 0.108 AVG Test Loss: 0.201 AVG Training Acc 0.956624 AVG Test Acc 0.937417 %
+Fold 8
+Epoch: 10/100 AVG Training Loss: 0.169 AVG Test Loss: 0.171 AVG Training Acc 0.941484 AVG Test Acc 0.942040 %
+Epoch: 20/100 AVG Training Loss: 0.154 AVG Test Loss: 0.167 AVG Training Acc 0.944271 AVG Test Acc 0.942825 %
+Epoch: 30/100 AVG Training Loss: 0.142 AVG Test Loss: 0.169 AVG Training Acc 0.946851 AVG Test Acc 0.943218 %
+Epoch: 40/100 AVG Training Loss: 0.134 AVG Test Loss: 0.172 AVG Training Acc 0.948886 AVG Test Acc 0.943445 %
+Epoch: 50/100 AVG Training Loss: 0.127 AVG Test Loss: 0.175 AVG Training Acc 0.950213 AVG Test Acc 0.943266 %
+Epoch: 60/100 AVG Training Loss: 0.122 AVG Test Loss: 0.179 AVG Training Acc 0.951855 AVG Test Acc 0.942247 %
+Epoch: 70/100 AVG Training Loss: 0.118 AVG Test Loss: 0.183 AVG Training Acc 0.953954 AVG Test Acc 0.942956 %
+Epoch: 80/100 AVG Training Loss: 0.115 AVG Test Loss: 0.190 AVG Training Acc 0.954499 AVG Test Acc 0.941930 %
+Epoch: 90/100 AVG Training Loss: 0.112 AVG Test Loss: 0.194 AVG Training Acc 0.956126 AVG Test Acc 0.940524 %
+Epoch: 100/100 AVG Training Loss: 0.109 AVG Test Loss: 0.198 AVG Training Acc 0.957251 AVG Test Acc 0.940173 %
+Fold 9
+Epoch: 10/100 AVG Training Loss: 0.169 AVG Test Loss: 0.168 AVG Training Acc 0.941055 AVG Test Acc 0.940504 %
+Epoch: 20/100 AVG Training Loss: 0.153 AVG Test Loss: 0.167 AVG Training Acc 0.944215 AVG Test Acc 0.941923 %
+Epoch: 30/100 AVG Training Loss: 0.142 AVG Test Loss: 0.170 AVG Training Acc 0.946610 AVG Test Acc 0.941372 %
+Epoch: 40/100 AVG Training Loss: 0.134 AVG Test Loss: 0.172 AVG Training Acc 0.948925 AVG Test Acc 0.941386 %
+Epoch: 50/100 AVG Training Loss: 0.128 AVG Test Loss: 0.177 AVG Training Acc 0.951025 AVG Test Acc 0.940008 %
+Epoch: 60/100 AVG Training Loss: 0.121 AVG Test Loss: 0.183 AVG Training Acc 0.952424 AVG Test Acc 0.939188 %
+Epoch: 70/100 AVG Training Loss: 0.118 AVG Test Loss: 0.186 AVG Training Acc 0.953865 AVG Test Acc 0.939367 %
+Epoch: 80/100 AVG Training Loss: 0.115 AVG Test Loss: 0.191 AVG Training Acc 0.954695 AVG Test Acc 0.938974 %
+Epoch: 90/100 AVG Training Loss: 0.112 AVG Test Loss: 0.195 AVG Training Acc 0.955914 AVG Test Acc 0.938120 %
+Epoch: 100/100 AVG Training Loss: 0.109 AVG Test Loss: 0.199 AVG Training Acc 0.956979 AVG Test Acc 0.937782 %
+Fold 10
+Epoch: 10/100 AVG Training Loss: 0.169 AVG Test Loss: 0.171 AVG Training Acc 0.941018 AVG Test Acc 0.940373 %
+Epoch: 20/100 AVG Training Loss: 0.154 AVG Test Loss: 0.170 AVG Training Acc 0.944253 AVG Test Acc 0.941344 %
+Epoch: 30/100 AVG Training Loss: 0.142 AVG Test Loss: 0.171 AVG Training Acc 0.946690 AVG Test Acc 0.941379 %
+Epoch: 40/100 AVG Training Loss: 0.133 AVG Test Loss: 0.175 AVG Training Acc 0.949128 AVG Test Acc 0.940931 %
+Epoch: 50/100 AVG Training Loss: 0.126 AVG Test Loss: 0.182 AVG Training Acc 0.951220 AVG Test Acc 0.940180 %
+Epoch: 60/100 AVG Training Loss: 0.122 AVG Test Loss: 0.187 AVG Training Acc 0.952161 AVG Test Acc 0.939767 %
+Epoch: 70/100 AVG Training Loss: 0.117 AVG Test Loss: 0.190 AVG Training Acc 0.953534 AVG Test Acc 0.939505 %
+Epoch: 80/100 AVG Training Loss: 0.113 AVG Test Loss: 0.193 AVG Training Acc 0.955398 AVG Test Acc 0.938471 %
+Epoch: 90/100 AVG Training Loss: 0.111 AVG Test Loss: 0.193 AVG Training Acc 0.956207 AVG Test Acc 0.938919 %
+Epoch: 100/100 AVG Training Loss: 0.108 AVG Test Loss: 0.201 AVG Training Acc 0.956660 AVG Test Acc 0.939064 %
+Performance of 10 fold cross validation
+Average Training Loss: 0.1083 	 Average Test Loss: 0.1969 	 Average Training Acc: 0.957022 	 Average Test Acc: 0.939057
+/home/groups/rondror/software/jwang003/miniconda3/envs/genre-classification/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1334: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/groups/rondror/software/jwang003/miniconda3/envs/genre-classification/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1334: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in samples with no predicted labels. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+Running Cross Validation on Batchsize = 32, Epochs = 100, Learning Rate = 0.001, Neurons = (256, 128)
+Fold 1
+/home/groups/rondror/software/jwang003/miniconda3/envs/genre-classification/lib/python3.10/site-packages/torch/nn/functional.py:1967: UserWarning: nn.functional.sigmoid is deprecated. Use torch.sigmoid instead.
+  warnings.warn("nn.functional.sigmoid is deprecated. Use torch.sigmoid instead.")
+Epoch: 10/100 AVG Training Loss: 0.166 AVG Test Loss: 0.169 AVG Training Acc 0.941564 AVG Test Acc 0.942682 %
+Epoch: 20/100 AVG Training Loss: 0.150 AVG Test Loss: 0.168 AVG Training Acc 0.944490 AVG Test Acc 0.942605 %
+Epoch: 30/100 AVG Training Loss: 0.136 AVG Test Loss: 0.168 AVG Training Acc 0.947914 AVG Test Acc 0.941953 %
+Epoch: 40/100 AVG Training Loss: 0.126 AVG Test Loss: 0.173 AVG Training Acc 0.951467 AVG Test Acc 0.941656 %
+Epoch: 50/100 AVG Training Loss: 0.119 AVG Test Loss: 0.181 AVG Training Acc 0.952950 AVG Test Acc 0.939915 %
+Epoch: 60/100 AVG Training Loss: 0.114 AVG Test Loss: 0.183 AVG Training Acc 0.955135 AVG Test Acc 0.939640 %
+Epoch: 70/100 AVG Training Loss: 0.107 AVG Test Loss: 0.189 AVG Training Acc 0.956877 AVG Test Acc 0.940844 %
+Epoch: 80/100 AVG Training Loss: 0.104 AVG Test Loss: 0.195 AVG Training Acc 0.958329 AVG Test Acc 0.938746 %
+Epoch: 90/100 AVG Training Loss: 0.100 AVG Test Loss: 0.196 AVG Training Acc 0.959750 AVG Test Acc 0.939851 %
+Epoch: 100/100 AVG Training Loss: 0.098 AVG Test Loss: 0.200 AVG Training Acc 0.960884 AVG Test Acc 0.938611 %
+Fold 2
+Epoch: 10/100 AVG Training Loss: 0.165 AVG Test Loss: 0.164 AVG Training Acc 0.941840 AVG Test Acc 0.941285 %
+Epoch: 20/100 AVG Training Loss: 0.149 AVG Test Loss: 0.166 AVG Training Acc 0.945409 AVG Test Acc 0.941346 %
+Epoch: 30/100 AVG Training Loss: 0.136 AVG Test Loss: 0.169 AVG Training Acc 0.949051 AVG Test Acc 0.940826 %
+Epoch: 40/100 AVG Training Loss: 0.126 AVG Test Loss: 0.173 AVG Training Acc 0.951048 AVG Test Acc 0.940435 %
+Epoch: 50/100 AVG Training Loss: 0.118 AVG Test Loss: 0.175 AVG Training Acc 0.953616 AVG Test Acc 0.939900 %
+Epoch: 60/100 AVG Training Loss: 0.113 AVG Test Loss: 0.178 AVG Training Acc 0.955200 AVG Test Acc 0.939717 %
+Epoch: 70/100 AVG Training Loss: 0.107 AVG Test Loss: 0.187 AVG Training Acc 0.957334 AVG Test Acc 0.938516 %
+Epoch: 80/100 AVG Training Loss: 0.105 AVG Test Loss: 0.191 AVG Training Acc 0.958491 AVG Test Acc 0.938298 %
+Epoch: 90/100 AVG Training Loss: 0.102 AVG Test Loss: 0.192 AVG Training Acc 0.959726 AVG Test Acc 0.937922 %
+Epoch: 100/100 AVG Training Loss: 0.098 AVG Test Loss: 0.198 AVG Training Acc 0.961254 AVG Test Acc 0.938910 %
+Fold 3
+Epoch: 10/100 AVG Training Loss: 0.166 AVG Test Loss: 0.167 AVG Training Acc 0.941670 AVG Test Acc 0.941634 %
+Epoch: 20/100 AVG Training Loss: 0.149 AVG Test Loss: 0.165 AVG Training Acc 0.945078 AVG Test Acc 0.942212 %
+Epoch: 30/100 AVG Training Loss: 0.136 AVG Test Loss: 0.170 AVG Training Acc 0.947956 AVG Test Acc 0.941785 %
+Epoch: 40/100 AVG Training Loss: 0.126 AVG Test Loss: 0.174 AVG Training Acc 0.951045 AVG Test Acc 0.941268 %
+Epoch: 50/100 AVG Training Loss: 0.118 AVG Test Loss: 0.179 AVG Training Acc 0.953118 AVG Test Acc 0.938685 %
+Epoch: 60/100 AVG Training Loss: 0.112 AVG Test Loss: 0.182 AVG Training Acc 0.955724 AVG Test Acc 0.939009 %
+Epoch: 70/100 AVG Training Loss: 0.108 AVG Test Loss: 0.188 AVG Training Acc 0.957457 AVG Test Acc 0.938657 %
+Epoch: 80/100 AVG Training Loss: 0.104 AVG Test Loss: 0.190 AVG Training Acc 0.958740 AVG Test Acc 0.939794 %
+Epoch: 90/100 AVG Training Loss: 0.100 AVG Test Loss: 0.196 AVG Training Acc 0.960102 AVG Test Acc 0.938864 %
+Epoch: 100/100 AVG Training Loss: 0.097 AVG Test Loss: 0.201 AVG Training Acc 0.960984 AVG Test Acc 0.936970 %
+Fold 4
+Epoch: 10/100 AVG Training Loss: 0.165 AVG Test Loss: 0.166 AVG Training Acc 0.941985 AVG Test Acc 0.941620 %
+Epoch: 20/100 AVG Training Loss: 0.150 AVG Test Loss: 0.167 AVG Training Acc 0.944868 AVG Test Acc 0.941592 %
+Epoch: 30/100 AVG Training Loss: 0.135 AVG Test Loss: 0.171 AVG Training Acc 0.948066 AVG Test Acc 0.941420 %
+Epoch: 40/100 AVG Training Loss: 0.127 AVG Test Loss: 0.174 AVG Training Acc 0.950530 AVG Test Acc 0.941186 %
+Epoch: 50/100 AVG Training Loss: 0.119 AVG Test Loss: 0.181 AVG Training Acc 0.952991 AVG Test Acc 0.941027 %
+Epoch: 60/100 AVG Training Loss: 0.114 AVG Test Loss: 0.184 AVG Training Acc 0.955374 AVG Test Acc 0.940883 %
+Epoch: 70/100 AVG Training Loss: 0.108 AVG Test Loss: 0.189 AVG Training Acc 0.957220 AVG Test Acc 0.938919 %
+Epoch: 80/100 AVG Training Loss: 0.105 AVG Test Loss: 0.195 AVG Training Acc 0.958096 AVG Test Acc 0.938781 %
+Epoch: 90/100 AVG Training Loss: 0.100 AVG Test Loss: 0.197 AVG Training Acc 0.959952 AVG Test Acc 0.937686 %
+Epoch: 100/100 AVG Training Loss: 0.098 AVG Test Loss: 0.202 AVG Training Acc 0.960746 AVG Test Acc 0.938623 %
+Fold 5
+Epoch: 10/100 AVG Training Loss: 0.165 AVG Test Loss: 0.167 AVG Training Acc 0.941850 AVG Test Acc 0.941172 %
+Epoch: 20/100 AVG Training Loss: 0.148 AVG Test Loss: 0.165 AVG Training Acc 0.945066 AVG Test Acc 0.940876 %
+Epoch: 30/100 AVG Training Loss: 0.137 AVG Test Loss: 0.167 AVG Training Acc 0.948291 AVG Test Acc 0.940097 %
+Epoch: 40/100 AVG Training Loss: 0.127 AVG Test Loss: 0.170 AVG Training Acc 0.950827 AVG Test Acc 0.940318 %
+Epoch: 50/100 AVG Training Loss: 0.118 AVG Test Loss: 0.174 AVG Training Acc 0.953280 AVG Test Acc 0.940428 %
+Epoch: 60/100 AVG Training Loss: 0.114 AVG Test Loss: 0.179 AVG Training Acc 0.955149 AVG Test Acc 0.940001 %
+Epoch: 70/100 AVG Training Loss: 0.108 AVG Test Loss: 0.186 AVG Training Acc 0.957187 AVG Test Acc 0.939153 %
+Epoch: 80/100 AVG Training Loss: 0.105 AVG Test Loss: 0.187 AVG Training Acc 0.958333 AVG Test Acc 0.940580 %
+Epoch: 90/100 AVG Training Loss: 0.099 AVG Test Loss: 0.195 AVG Training Acc 0.960851 AVG Test Acc 0.938182 %
+Epoch: 100/100 AVG Training Loss: 0.098 AVG Test Loss: 0.202 AVG Training Acc 0.961289 AVG Test Acc 0.936832 %
+Fold 6
+Epoch: 10/100 AVG Training Loss: 0.165 AVG Test Loss: 0.168 AVG Training Acc 0.941703 AVG Test Acc 0.942846 %
+Epoch: 20/100 AVG Training Loss: 0.150 AVG Test Loss: 0.167 AVG Training Acc 0.944824 AVG Test Acc 0.943638 %
+Epoch: 30/100 AVG Training Loss: 0.136 AVG Test Loss: 0.170 AVG Training Acc 0.948160 AVG Test Acc 0.942646 %
+Epoch: 40/100 AVG Training Loss: 0.126 AVG Test Loss: 0.175 AVG Training Acc 0.951513 AVG Test Acc 0.942681 %
+Epoch: 50/100 AVG Training Loss: 0.118 AVG Test Loss: 0.182 AVG Training Acc 0.953686 AVG Test Acc 0.940896 %
+Epoch: 60/100 AVG Training Loss: 0.112 AVG Test Loss: 0.185 AVG Training Acc 0.955558 AVG Test Acc 0.940249 %
+Epoch: 70/100 AVG Training Loss: 0.107 AVG Test Loss: 0.190 AVG Training Acc 0.957655 AVG Test Acc 0.939539 %
+Epoch: 80/100 AVG Training Loss: 0.104 AVG Test Loss: 0.193 AVG Training Acc 0.958775 AVG Test Acc 0.939036 %
+Epoch: 90/100 AVG Training Loss: 0.100 AVG Test Loss: 0.200 AVG Training Acc 0.960249 AVG Test Acc 0.937762 %
+Epoch: 100/100 AVG Training Loss: 0.096 AVG Test Loss: 0.203 AVG Training Acc 0.961496 AVG Test Acc 0.937404 %
+Fold 7
+Epoch: 10/100 AVG Training Loss: 0.165 AVG Test Loss: 0.174 AVG Training Acc 0.942041 AVG Test Acc 0.940104 %
+Epoch: 20/100 AVG Training Loss: 0.149 AVG Test Loss: 0.174 AVG Training Acc 0.944948 AVG Test Acc 0.940490 %
+Epoch: 30/100 AVG Training Loss: 0.136 AVG Test Loss: 0.175 AVG Training Acc 0.948536 AVG Test Acc 0.940021 %
+Epoch: 40/100 AVG Training Loss: 0.126 AVG Test Loss: 0.177 AVG Training Acc 0.951184 AVG Test Acc 0.938885 %
+Epoch: 50/100 AVG Training Loss: 0.119 AVG Test Loss: 0.183 AVG Training Acc 0.953551 AVG Test Acc 0.938713 %
+Epoch: 60/100 AVG Training Loss: 0.113 AVG Test Loss: 0.183 AVG Training Acc 0.955302 AVG Test Acc 0.938058 %
+Epoch: 70/100 AVG Training Loss: 0.109 AVG Test Loss: 0.190 AVG Training Acc 0.956911 AVG Test Acc 0.937900 %
+Epoch: 80/100 AVG Training Loss: 0.102 AVG Test Loss: 0.197 AVG Training Acc 0.959077 AVG Test Acc 0.936281 %
+Epoch: 90/100 AVG Training Loss: 0.100 AVG Test Loss: 0.198 AVG Training Acc 0.959685 AVG Test Acc 0.937114 %
+Epoch: 100/100 AVG Training Loss: 0.097 AVG Test Loss: 0.202 AVG Training Acc 0.961295 AVG Test Acc 0.936446 %
+Fold 8
+Epoch: 10/100 AVG Training Loss: 0.165 AVG Test Loss: 0.170 AVG Training Acc 0.941728 AVG Test Acc 0.942715 %
+Epoch: 20/100 AVG Training Loss: 0.149 AVG Test Loss: 0.170 AVG Training Acc 0.945186 AVG Test Acc 0.942550 %
+Epoch: 30/100 AVG Training Loss: 0.135 AVG Test Loss: 0.172 AVG Training Acc 0.948095 AVG Test Acc 0.942185 %
+Epoch: 40/100 AVG Training Loss: 0.125 AVG Test Loss: 0.173 AVG Training Acc 0.951252 AVG Test Acc 0.941537 %
+Epoch: 50/100 AVG Training Loss: 0.118 AVG Test Loss: 0.177 AVG Training Acc 0.953930 AVG Test Acc 0.940779 %
+Epoch: 60/100 AVG Training Loss: 0.110 AVG Test Loss: 0.185 AVG Training Acc 0.956234 AVG Test Acc 0.942088 %
+Epoch: 70/100 AVG Training Loss: 0.106 AVG Test Loss: 0.191 AVG Training Acc 0.957241 AVG Test Acc 0.940793 %
+Epoch: 80/100 AVG Training Loss: 0.103 AVG Test Loss: 0.196 AVG Training Acc 0.959036 AVG Test Acc 0.939167 %
+Epoch: 90/100 AVG Training Loss: 0.101 AVG Test Loss: 0.196 AVG Training Acc 0.959493 AVG Test Acc 0.939629 %
+Epoch: 100/100 AVG Training Loss: 0.097 AVG Test Loss: 0.201 AVG Training Acc 0.961533 AVG Test Acc 0.939009 %
+Fold 9
+Epoch: 10/100 AVG Training Loss: 0.164 AVG Test Loss: 0.168 AVG Training Acc 0.942095 AVG Test Acc 0.939601 %
+Epoch: 20/100 AVG Training Loss: 0.148 AVG Test Loss: 0.168 AVG Training Acc 0.945248 AVG Test Acc 0.941103 %
+Epoch: 30/100 AVG Training Loss: 0.135 AVG Test Loss: 0.175 AVG Training Acc 0.948317 AVG Test Acc 0.939959 %
+Epoch: 40/100 AVG Training Loss: 0.125 AVG Test Loss: 0.177 AVG Training Acc 0.951245 AVG Test Acc 0.938719 %
+Epoch: 50/100 AVG Training Loss: 0.118 AVG Test Loss: 0.181 AVG Training Acc 0.953800 AVG Test Acc 0.939346 %
+Epoch: 60/100 AVG Training Loss: 0.112 AVG Test Loss: 0.185 AVG Training Acc 0.955637 AVG Test Acc 0.937624 %
+Epoch: 70/100 AVG Training Loss: 0.108 AVG Test Loss: 0.191 AVG Training Acc 0.957263 AVG Test Acc 0.938106 %
+Epoch: 80/100 AVG Training Loss: 0.102 AVG Test Loss: 0.195 AVG Training Acc 0.958890 AVG Test Acc 0.937789 %
+Epoch: 90/100 AVG Training Loss: 0.100 AVG Test Loss: 0.198 AVG Training Acc 0.960200 AVG Test Acc 0.937087 %
+Epoch: 100/100 AVG Training Loss: 0.098 AVG Test Loss: 0.207 AVG Training Acc 0.960475 AVG Test Acc 0.936549 %
+Fold 10
+Epoch: 10/100 AVG Training Loss: 0.164 AVG Test Loss: 0.172 AVG Training Acc 0.941903 AVG Test Acc 0.941572 %
+Epoch: 20/100 AVG Training Loss: 0.149 AVG Test Loss: 0.173 AVG Training Acc 0.944837 AVG Test Acc 0.940642 %
+Epoch: 30/100 AVG Training Loss: 0.135 AVG Test Loss: 0.176 AVG Training Acc 0.948463 AVG Test Acc 0.939773 %
+Epoch: 40/100 AVG Training Loss: 0.126 AVG Test Loss: 0.179 AVG Training Acc 0.950795 AVG Test Acc 0.939884 %
+Epoch: 50/100 AVG Training Loss: 0.118 AVG Test Loss: 0.184 AVG Training Acc 0.953854 AVG Test Acc 0.939553 %
+Epoch: 60/100 AVG Training Loss: 0.112 AVG Test Loss: 0.188 AVG Training Acc 0.955828 AVG Test Acc 0.940208 %
+Epoch: 70/100 AVG Training Loss: 0.107 AVG Test Loss: 0.195 AVG Training Acc 0.957258 AVG Test Acc 0.937748 %
+Epoch: 80/100 AVG Training Loss: 0.104 AVG Test Loss: 0.199 AVG Training Acc 0.958748 AVG Test Acc 0.937528 %
+Epoch: 90/100 AVG Training Loss: 0.101 AVG Test Loss: 0.202 AVG Training Acc 0.959631 AVG Test Acc 0.937714 %
+Epoch: 100/100 AVG Training Loss: 0.097 AVG Test Loss: 0.207 AVG Training Acc 0.961488 AVG Test Acc 0.937224 %
+Performance of 10 fold cross validation
+Average Training Loss: 0.0974 	 Average Test Loss: 0.2024 	 Average Training Acc: 0.961144 	 Average Test Acc: 0.937658
+/home/groups/rondror/software/jwang003/miniconda3/envs/genre-classification/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1334: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+/home/groups/rondror/software/jwang003/miniconda3/envs/genre-classification/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1334: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in samples with no predicted labels. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+Running Cross Validation on Batchsize = 32, Epochs = 100, Learning Rate = 0.001, Neurons = (300, 200)
+Fold 1
+/home/groups/rondror/software/jwang003/miniconda3/envs/genre-classification/lib/python3.10/site-packages/torch/nn/functional.py:1967: UserWarning: nn.functional.sigmoid is deprecated. Use torch.sigmoid instead.
+  warnings.warn("nn.functional.sigmoid is deprecated. Use torch.sigmoid instead.")
+Epoch: 10/100 AVG Training Loss: 0.161 AVG Test Loss: 0.168 AVG Training Acc 0.942447 AVG Test Acc 0.942234 %
+Epoch: 20/100 AVG Training Loss: 0.143 AVG Test Loss: 0.168 AVG Training Acc 0.946101 AVG Test Acc 0.942542 %
+Epoch: 30/100 AVG Training Loss: 0.128 AVG Test Loss: 0.170 AVG Training Acc 0.950370 AVG Test Acc 0.940862 %
+Epoch: 40/100 AVG Training Loss: 0.117 AVG Test Loss: 0.175 AVG Training Acc 0.954022 AVG Test Acc 0.940059 %
+Epoch: 50/100 AVG Training Loss: 0.108 AVG Test Loss: 0.181 AVG Training Acc 0.956929 AVG Test Acc 0.938998 %
+Epoch: 60/100 AVG Training Loss: 0.102 AVG Test Loss: 0.184 AVG Training Acc 0.959474 AVG Test Acc 0.939233 %
+Epoch: 70/100 AVG Training Loss: 0.099 AVG Test Loss: 0.191 AVG Training Acc 0.961081 AVG Test Acc 0.937563 %
+Epoch: 80/100 AVG Training Loss: 0.096 AVG Test Loss: 0.192 AVG Training Acc 0.961515 AVG Test Acc 0.938173 %
+Epoch: 90/100 AVG Training Loss: 0.090 AVG Test Loss: 0.195 AVG Training Acc 0.964102 AVG Test Acc 0.938009 %
+Epoch: 100/100 AVG Training Loss: 0.087 AVG Test Loss: 0.198 AVG Training Acc 0.965344 AVG Test Acc 0.937809 %
+Fold 2
+Epoch: 10/100 AVG Training Loss: 0.162 AVG Test Loss: 0.167 AVG Training Acc 0.942669 AVG Test Acc 0.940487 %
+Epoch: 20/100 AVG Training Loss: 0.143 AVG Test Loss: 0.168 AVG Training Acc 0.946610 AVG Test Acc 0.941097 %
+Epoch: 30/100 AVG Training Loss: 0.128 AVG Test Loss: 0.169 AVG Training Acc 0.950482 AVG Test Acc 0.941124 %
+Epoch: 40/100 AVG Training Loss: 0.117 AVG Test Loss: 0.174 AVG Training Acc 0.953680 AVG Test Acc 0.940502 %
+Epoch: 50/100 AVG Training Loss: 0.110 AVG Test Loss: 0.178 AVG Training Acc 0.956735 AVG Test Acc 0.939580 %
+Epoch: 60/100 AVG Training Loss: 0.103 AVG Test Loss: 0.181 AVG Training Acc 0.958905 AVG Test Acc 0.938164 %
+Epoch: 70/100 AVG Training Loss: 0.098 AVG Test Loss: 0.191 AVG Training Acc 0.961279 AVG Test Acc 0.938308 %
+Epoch: 80/100 AVG Training Loss: 0.094 AVG Test Loss: 0.190 AVG Training Acc 0.962691 AVG Test Acc 0.938355 %
+Epoch: 90/100 AVG Training Loss: 0.090 AVG Test Loss: 0.195 AVG Training Acc 0.964276 AVG Test Acc 0.937710 %
+Epoch: 100/100 AVG Training Loss: 0.086 AVG Test Loss: 0.201 AVG Training Acc 0.965549 AVG Test Acc 0.936639 %
+Fold 3
+Epoch: 10/100 AVG Training Loss: 0.162 AVG Test Loss: 0.168 AVG Training Acc 0.941945 AVG Test Acc 0.941007 %
+Epoch: 20/100 AVG Training Loss: 0.142 AVG Test Loss: 0.169 AVG Training Acc 0.946411 AVG Test Acc 0.941103 %
+Epoch: 30/100 AVG Training Loss: 0.129 AVG Test Loss: 0.175 AVG Training Acc 0.950289 AVG Test Acc 0.938837 %
+Epoch: 40/100 AVG Training Loss: 0.116 AVG Test Loss: 0.177 AVG Training Acc 0.954025 AVG Test Acc 0.938251 %
+Epoch: 50/100 AVG Training Loss: 0.109 AVG Test Loss: 0.182 AVG Training Acc 0.956640 AVG Test Acc 0.937397 %
+Epoch: 60/100 AVG Training Loss: 0.100 AVG Test Loss: 0.186 AVG Training Acc 0.959885 AVG Test Acc 0.938210 %
+Epoch: 70/100 AVG Training Loss: 0.098 AVG Test Loss: 0.192 AVG Training Acc 0.961402 AVG Test Acc 0.938396 %
+Epoch: 80/100 AVG Training Loss: 0.094 AVG Test Loss: 0.196 AVG Training Acc 0.962102 AVG Test Acc 0.937080 %
+Epoch: 90/100 AVG Training Loss: 0.089 AVG Test Loss: 0.201 AVG Training Acc 0.964706 AVG Test Acc 0.937521 %
+Epoch: 100/100 AVG Training Loss: 0.085 AVG Test Loss: 0.205 AVG Training Acc 0.966165 AVG Test Acc 0.935447 %
+Fold 4
+Epoch: 10/100 AVG Training Loss: 0.160 AVG Test Loss: 0.167 AVG Training Acc 0.942174 AVG Test Acc 0.940400 %
+Epoch: 20/100 AVG Training Loss: 0.143 AVG Test Loss: 0.168 AVG Training Acc 0.946234 AVG Test Acc 0.941399 %
+Epoch: 30/100 AVG Training Loss: 0.128 AVG Test Loss: 0.173 AVG Training Acc 0.950600 AVG Test Acc 0.940256 %
+Epoch: 40/100 AVG Training Loss: 0.117 AVG Test Loss: 0.176 AVG Training Acc 0.953698 AVG Test Acc 0.938575 %
+Epoch: 50/100 AVG Training Loss: 0.108 AVG Test Loss: 0.180 AVG Training Acc 0.957326 AVG Test Acc 0.938210 %
+Epoch: 60/100 AVG Training Loss: 0.103 AVG Test Loss: 0.187 AVG Training Acc 0.958776 AVG Test Acc 0.937569 %
+Epoch: 70/100 AVG Training Loss: 0.097 AVG Test Loss: 0.190 AVG Training Acc 0.961083 AVG Test Acc 0.938244 %
+Epoch: 80/100 AVG Training Loss: 0.093 AVG Test Loss: 0.194 AVG Training Acc 0.962680 AVG Test Acc 0.938823 %
+Epoch: 90/100 AVG Training Loss: 0.090 AVG Test Loss: 0.203 AVG Training Acc 0.964076 AVG Test Acc 0.936866 %
+Epoch: 100/100 AVG Training Loss: 0.086 AVG Test Loss: 0.208 AVG Training Acc 0.965898 AVG Test Acc 0.936563 %
+Fold 5
+Epoch: 10/100 AVG Training Loss: 0.160 AVG Test Loss: 0.167 AVG Training Acc 0.942305 AVG Test Acc 0.940442 %
+Epoch: 20/100 AVG Training Loss: 0.143 AVG Test Loss: 0.165 AVG Training Acc 0.946078 AVG Test Acc 0.940800 %
+Epoch: 30/100 AVG Training Loss: 0.128 AVG Test Loss: 0.170 AVG Training Acc 0.950278 AVG Test Acc 0.940972 %
+Epoch: 40/100 AVG Training Loss: 0.117 AVG Test Loss: 0.171 AVG Training Acc 0.953681 AVG Test Acc 0.941344 %
+Epoch: 50/100 AVG Training Loss: 0.110 AVG Test Loss: 0.181 AVG Training Acc 0.956137 AVG Test Acc 0.939457 %
+Epoch: 60/100 AVG Training Loss: 0.102 AVG Test Loss: 0.187 AVG Training Acc 0.959259 AVG Test Acc 0.937624 %
+Epoch: 70/100 AVG Training Loss: 0.098 AVG Test Loss: 0.191 AVG Training Acc 0.961210 AVG Test Acc 0.938299 %
+Epoch: 80/100 AVG Training Loss: 0.093 AVG Test Loss: 0.194 AVG Training Acc 0.962977 AVG Test Acc 0.937596 %
+Epoch: 90/100 AVG Training Loss: 0.089 AVG Test Loss: 0.201 AVG Training Acc 0.965253 AVG Test Acc 0.937038 %
+Epoch: 100/100 AVG Training Loss: 0.086 AVG Test Loss: 0.205 AVG Training Acc 0.965893 AVG Test Acc 0.936653 %
+Fold 6
+Epoch: 10/100 AVG Training Loss: 0.161 AVG Test Loss: 0.169 AVG Training Acc 0.942768 AVG Test Acc 0.943135 %
+Epoch: 20/100 AVG Training Loss: 0.142 AVG Test Loss: 0.169 AVG Training Acc 0.946680 AVG Test Acc 0.941902 %
+Epoch: 30/100 AVG Training Loss: 0.128 AVG Test Loss: 0.173 AVG Training Acc 0.950567 AVG Test Acc 0.941985 %
+Epoch: 40/100 AVG Training Loss: 0.118 AVG Test Loss: 0.179 AVG Training Acc 0.953848 AVG Test Acc 0.939601 %
+Epoch: 50/100 AVG Training Loss: 0.110 AVG Test Loss: 0.183 AVG Training Acc 0.956871 AVG Test Acc 0.939264 %
+Epoch: 60/100 AVG Training Loss: 0.104 AVG Test Loss: 0.188 AVG Training Acc 0.958989 AVG Test Acc 0.939319 %
+Epoch: 70/100 AVG Training Loss: 0.097 AVG Test Loss: 0.189 AVG Training Acc 0.960878 AVG Test Acc 0.938120 %
+Epoch: 80/100 AVG Training Loss: 0.093 AVG Test Loss: 0.196 AVG Training Acc 0.963027 AVG Test Acc 0.938017 %
+Epoch: 90/100 AVG Training Loss: 0.090 AVG Test Loss: 0.197 AVG Training Acc 0.964317 AVG Test Acc 0.935543 %
+Epoch: 100/100 AVG Training Loss: 0.086 AVG Test Loss: 0.203 AVG Training Acc 0.965474 AVG Test Acc 0.937224 %
+Fold 7
+Epoch: 10/100 AVG Training Loss: 0.160 AVG Test Loss: 0.172 AVG Training Acc 0.942681 AVG Test Acc 0.940497 %
+Epoch: 20/100 AVG Training Loss: 0.142 AVG Test Loss: 0.174 AVG Training Acc 0.946717 AVG Test Acc 0.939133 %
+Epoch: 30/100 AVG Training Loss: 0.128 AVG Test Loss: 0.177 AVG Training Acc 0.950557 AVG Test Acc 0.938609 %
+Epoch: 40/100 AVG Training Loss: 0.117 AVG Test Loss: 0.180 AVG Training Acc 0.954211 AVG Test Acc 0.938203 %
+Epoch: 50/100 AVG Training Loss: 0.109 AVG Test Loss: 0.186 AVG Training Acc 0.956370 AVG Test Acc 0.939147 %
+Epoch: 60/100 AVG Training Loss: 0.102 AVG Test Loss: 0.192 AVG Training Acc 0.959516 AVG Test Acc 0.936177 %
+Epoch: 70/100 AVG Training Loss: 0.098 AVG Test Loss: 0.195 AVG Training Acc 0.961302 AVG Test Acc 0.935399 %
+Epoch: 80/100 AVG Training Loss: 0.092 AVG Test Loss: 0.204 AVG Training Acc 0.963224 AVG Test Acc 0.933800 %
+Epoch: 90/100 AVG Training Loss: 0.090 AVG Test Loss: 0.204 AVG Training Acc 0.964561 AVG Test Acc 0.933539 %
+Epoch: 100/100 AVG Training Loss: 0.089 AVG Test Loss: 0.210 AVG Training Acc 0.964975 AVG Test Acc 0.933497 %
+Fold 8
+Epoch: 10/100 AVG Training Loss: 0.161 AVG Test Loss: 0.171 AVG Training Acc 0.942086 AVG Test Acc 0.942171 %
+Epoch: 20/100 AVG Training Loss: 0.142 AVG Test Loss: 0.169 AVG Training Acc 0.946646 AVG Test Acc 0.942791 %
+Epoch: 30/100 AVG Training Loss: 0.128 AVG Test Loss: 0.178 AVG Training Acc 0.950547 AVG Test Acc 0.940931 %
+Epoch: 40/100 AVG Training Loss: 0.118 AVG Test Loss: 0.179 AVG Training Acc 0.953235 AVG Test Acc 0.941840 %
+Epoch: 50/100 AVG Training Loss: 0.110 AVG Test Loss: 0.186 AVG Training Acc 0.956293 AVG Test Acc 0.940345 %
+Epoch: 60/100 AVG Training Loss: 0.102 AVG Test Loss: 0.191 AVG Training Acc 0.959177 AVG Test Acc 0.939574 %
+Epoch: 70/100 AVG Training Loss: 0.099 AVG Test Loss: 0.195 AVG Training Acc 0.960638 AVG Test Acc 0.940187 %
+Epoch: 80/100 AVG Training Loss: 0.095 AVG Test Loss: 0.200 AVG Training Acc 0.962611 AVG Test Acc 0.937548 %
+Epoch: 90/100 AVG Training Loss: 0.091 AVG Test Loss: 0.205 AVG Training Acc 0.963794 AVG Test Acc 0.939229 %
+Epoch: 100/100 AVG Training Loss: 0.088 AVG Test Loss: 0.207 AVG Training Acc 0.965375 AVG Test Acc 0.937417 %
+Fold 9
+Epoch: 10/100 AVG Training Loss: 0.161 AVG Test Loss: 0.167 AVG Training Acc 0.942723 AVG Test Acc 0.940573 %
+Epoch: 20/100 AVG Training Loss: 0.142 AVG Test Loss: 0.169 AVG Training Acc 0.946473 AVG Test Acc 0.941193 %
+Epoch: 30/100 AVG Training Loss: 0.129 AVG Test Loss: 0.173 AVG Training Acc 0.949845 AVG Test Acc 0.940187 %
+Epoch: 40/100 AVG Training Loss: 0.119 AVG Test Loss: 0.174 AVG Training Acc 0.953630 AVG Test Acc 0.938892 %
+Epoch: 50/100 AVG Training Loss: 0.109 AVG Test Loss: 0.182 AVG Training Acc 0.956728 AVG Test Acc 0.938079 %
+Epoch: 60/100 AVG Training Loss: 0.103 AVG Test Loss: 0.188 AVG Training Acc 0.959360 AVG Test Acc 0.936411 %
+Epoch: 70/100 AVG Training Loss: 0.097 AVG Test Loss: 0.196 AVG Training Acc 0.961262 AVG Test Acc 0.936777 %
+Epoch: 80/100 AVG Training Loss: 0.093 AVG Test Loss: 0.195 AVG Training Acc 0.962357 AVG Test Acc 0.936646 %
+Epoch: 90/100 AVG Training Loss: 0.090 AVG Test Loss: 0.202 AVG Training Acc 0.964274 AVG Test Acc 0.935764 %
+Epoch: 100/100 AVG Training Loss: 0.088 AVG Test Loss: 0.204 AVG Training Acc 0.964709 AVG Test Acc 0.934985 %
+Fold 10
+Epoch: 10/100 AVG Training Loss: 0.161 AVG Test Loss: 0.171 AVG Training Acc 0.942233 AVG Test Acc 0.941089 %
+Epoch: 20/100 AVG Training Loss: 0.144 AVG Test Loss: 0.172 AVG Training Acc 0.945851 AVG Test Acc 0.940511 %
+Epoch: 30/100 AVG Training Loss: 0.129 AVG Test Loss: 0.174 AVG Training Acc 0.950355 AVG Test Acc 0.941434 %
+Epoch: 40/100 AVG Training Loss: 0.118 AVG Test Loss: 0.179 AVG Training Acc 0.953123 AVG Test Acc 0.941007 %
+Epoch: 50/100 AVG Training Loss: 0.109 AVG Test Loss: 0.187 AVG Training Acc 0.956833 AVG Test Acc 0.937741 %
+Epoch: 60/100 AVG Training Loss: 0.102 AVG Test Loss: 0.188 AVG Training Acc 0.959515 AVG Test Acc 0.937686 %
+Epoch: 70/100 AVG Training Loss: 0.097 AVG Test Loss: 0.194 AVG Training Acc 0.961202 AVG Test Acc 0.937307 %
+Epoch: 80/100 AVG Training Loss: 0.092 AVG Test Loss: 0.200 AVG Training Acc 0.962933 AVG Test Acc 0.937052 %
+Epoch: 90/100 AVG Training Loss: 0.090 AVG Test Loss: 0.201 AVG Training Acc 0.964415 AVG Test Acc 0.937507 %
+Epoch: 100/100 AVG Training Loss: 0.087 AVG Test Loss: 0.207 AVG Training Acc 0.965926 AVG Test Acc 0.935585 %
+Performance of 10 fold cross validation
+Average Training Loss: 0.0868 	 Average Test Loss: 0.2049 	 Average Training Acc: 0.965531 	 Average Test Acc: 0.936182
+/home/groups/rondror/software/jwang003/miniconda3/envs/genre-classification/lib/python3.10/site-packages/sklearn/metrics/_classification.py:1334: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in samples with no predicted labels. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+[((32, 100, 0.001, (300, 200)), 0.3713494941782783), ((32, 100, 0.001, (256, 128)), 0.3649908727613597), ((32, 100, 0.001, (200, 100)), 0.35116315056481145)]
+{'hyperparameters': (32, 100, 0.001, (300, 200)), 'f1-score': 0.3713494941782783, 'numfeatures': 400}
+[{'hyperparameters': (32, 100, 0.001, (300, 200)), 'f1-score': 0.3713494941782783, 'numfeatures': 400}]
+400
+(32, 100, 0.001, (300, 200))
+/home/groups/rondror/software/jwang003/miniconda3/envs/genre-classification/lib/python3.10/site-packages/torch/nn/functional.py:1967: UserWarning: nn.functional.sigmoid is deprecated. Use torch.sigmoid instead.
+  warnings.warn("nn.functional.sigmoid is deprecated. Use torch.sigmoid instead.")
+tensor(0.2180, grad_fn=<BinaryCrossEntropyBackward0>)
+0.9310331474597274
+tensor(0.1344, grad_fn=<BinaryCrossEntropyBackward0>)
+0.9400705542521297
+tensor(0.1411, grad_fn=<BinaryCrossEntropyBackward0>)
+0.9424537748625806
+tensor(0.1539, grad_fn=<BinaryCrossEntropyBackward0>)
+0.9444121747211897
+tensor(0.1156, grad_fn=<BinaryCrossEntropyBackward0>)
+0.9461750370090741
+tensor(0.0975, grad_fn=<BinaryCrossEntropyBackward0>)
+0.9477914718217857
+tensor(0.1206, grad_fn=<BinaryCrossEntropyBackward0>)
+0.9492882743659281
+tensor(0.0970, grad_fn=<BinaryCrossEntropyBackward0>)
+0.9506435124724614
+tensor(0.0844, grad_fn=<BinaryCrossEntropyBackward0>)
+0.9518788232726817
+tensor(0.0916, grad_fn=<BinaryCrossEntropyBackward0>)
+0.9529933256174051
+Finished Job

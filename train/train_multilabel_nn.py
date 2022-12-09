@@ -25,7 +25,7 @@ if __name__ == '__main__':
     Y = full_train.iloc[:, len(full_train.columns) - num_genres:]
 
     hyperparameters = np.array([])
-    crossoutput = crossvalidation(X, Y, [32], [100], [0.001], [(200, 100)])
+    crossoutput = crossvalidation(X, Y, [32], [100], [0.001], [(200, 100), (256, 128), (300, 200)])
     print(crossoutput)
     hyperparameters = np.append(hyperparameters, crossoutput)
     hyperparameters = sorted(hyperparameters, key=lambda x: x["f1-score"])

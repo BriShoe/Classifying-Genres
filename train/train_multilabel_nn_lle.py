@@ -37,7 +37,7 @@ if __name__ == '__main__':
         X = full_train.iloc[:, :len(full_train.columns) - num_genres]
         lle = fitLLE(X, num)
         X = pd.DataFrame(lle.transform(X))
-        crossoutput = crossvalidation(X, Y, [32], [100], [0.001], [(96, 48)])
+        crossoutput = crossvalidation(X, Y, [32], [100], [0.001], [(200, 100), (256, 128), (300, 200)])
         crossoutput["numfeatures"] = num
         print(crossoutput)
         hyperparameters = np.append(hyperparameters, crossoutput)

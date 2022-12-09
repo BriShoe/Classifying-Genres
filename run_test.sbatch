@@ -2,7 +2,7 @@
 #SBATCH --job-name=test
 #SBATCH --time=8:00:00
 #SBATCH -p owners
-#SBATCH -c 2
+#SBATCH -c 4
 #SBATCH --mem=16GB
 #SBATCH --output=jobs/%j.out
 

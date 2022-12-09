@@ -2,7 +2,7 @@
 #SBATCH --job-name=logreg_nn
 #SBATCH --time=8:00:00
 #SBATCH -p owners
-#SBATCH -c 2
+#SBATCH -c 4
 #SBATCH --mem=16GB
 #SBATCH --output=jobs/logreg/%j.out
 
